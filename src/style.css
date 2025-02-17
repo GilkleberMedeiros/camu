@@ -1,0 +1,10 @@
+ @import "tailwindcss";
+
+
+
+@media screen and (width < 1080px) and (width >= 720px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
