@@ -2,13 +2,13 @@
 
 
 
-@media screen and (width < 1080px) and (width >= 720px) {
+@media screen and (width < 1024px) and (width >= 768px) {
   :root {
     font-size: 12px;
   }
 }
 
-@media screen and (width < 720px) and (width >= 408px) {
+@media screen and (width < 768px) and (width >= 410px) {
   :root {
     font-size: 10px;
   }
