@@ -19,6 +19,10 @@
   src: url(./assets/fonts/Inter.zip);
 }
 
-:root {
-  font-family: inter;
+@theme {
+  --color-main-black: #09090B;
+  --color-main-white: #FAFAFA;
+  --color-secondary-black: #27272A;
+  --color-secondary-white: #E4E4E7;
+  --font-inter: inter;
 }
