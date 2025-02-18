@@ -13,3 +13,12 @@
     font-size: 12px;
   }
 }
+
+@font-face {
+  font-family: inter;
+  src: url(./assets/fonts/Inter.zip);
+}
+
+:root {
+  font-family: inter;
+}
