@@ -6,12 +6,34 @@
   <link rel="stylesheet" href="./src/style.css">
   <title>Document</title>
 </head>
-<body>
-  <header class="bg-zinc-50 p-[26px]">
-    <div id="logo">
-      <img id="logoImg" src="" alt="">
-      <h1 id="logoTitle" class="text-[34px]">Camu</h1>
-    </div>
+<body class="bg-zinc-50">
+  <header class="p-[26px] flex justify-between content-center border-b-2"> <!-- header START -->
+    <div id="logo" class="flex items-center gap-[10px]"> <!-- div logo START -->
+      <img id="logoImg" class="w-[50px] h=[50px]" src="./src/assets/tmp-logo.svg" alt="logo">
+      <h1 id="logoTitle" class="text-[30px]">Camu</h1>
+    </div> <!-- log END -->
+    <div id="enhancedMenu" class="flex content-center"> <!-- div enchancedMenu START -->
+        <div id="shareOnSocialMedia" class="flex content-center gap-[5px] px-[10px] py-[5px]"> <!-- shareOnSocialMedia START -->
+          <p id="shareText" class="text-[16px] content-center">Compartilhe:</p>
+          <div id="socialMediaIcons" class="content-center">
+            <button id="whatsIconBtn" class="m-0 b-0 p-0">
+              <img src="./src/assets/whats-icon.svg" alt="botão de compartilhar no whatsapp.">
+            </button>
+            <button id="facebookIconBtn" class="m-0 b-0 p-0">
+              <img src="./src/assets/facebook-icon.svg" alt="botão de compartilhar no facebook.">
+            </button>
+            <button id="instagramIconBtn" class="m-0 b-0 p-0">
+              <img src="./src/assets/instagram-icon.svg" alt="botão de compartilhar no instagram.">
+            </button>
+          </div>
+        </div>
+        <nav id="menu" class="flex justify-between px-[20px] py-[12px]"> <!-- menu START -->
+          <a href="" class="text-[12px]">Sobre</a>
+          <a href="" class="text-[12px]">Localização</a>
+          <a href="" class="text-[12px]">Horário de funcionamento</a>
+          <a href="" class="text-[12px]">Entre em contato</a>
+        </nav> <!-- menu END -->
+      </div> <!-- div enhancedMenu END -->
   </header>
 </body>
 </html>
