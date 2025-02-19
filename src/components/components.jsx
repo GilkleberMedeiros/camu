@@ -7,29 +7,33 @@ export default {
     "header": Header,
 }
 
+
 export function ShareOnSocialMedia()
 {
-    return (
-      <div id="shareOnSocialMedia" className="flex justify-stretch content-center 
-        gap-[5px] px-[10px] py-[5px]">
-        <p id="shareText" className="text-[16px] max-md:text-[14px] max-sm:text-[12px] content-center">
-          Compartilhe:</p>
-        <div id="socialMediaIcons" className="content-center">
-          <button id="whatsIconBtn" className="m-0 b-0 p-0">
-            <img src="./src/assets/whats-icon.svg" className="w-[1.5rem] h-[1.5rem]" 
-              alt="botão de compartilhar no whatsapp."/>
-          </button>
-          <button id="facebookIconBtn" className="m-0 b-0 p-0">
-            <img src="./src/assets/facebook-icon.svg" className="w-[1.5rem] h-[1.5rem]" 
-              alt="botão de compartilhar no facebook."/>
-          </button>
-          <button id="instagramIconBtn" className="m-0 b-0 p-0">
-            <img src="./src/assets/instagram-icon.svg" className="w-[1.5rem] h-[1.5rem]" 
-              alt="botão de compartilhar no instagram."/>
-          </button>
-        </div>
+  return (
+    <div id="shareOnSocialMedia" className="flex justify-stretch content-center 
+      gap-[5px] px-[10px] py-[5px]">
+      <p id="shareText" className="text-[16px] max-md:text-[14px] max-sm:text-[12px] content-center">
+        Compartilhe:</p>
+      <div id="socialMediaIcons" className="content-center">
+        <IconBtn 
+          id="whats"
+          iconSrc="./src/assets/whats-icon.svg"
+          iconAlt="botão de compartilhar no whatsapp."
+        />
+        <IconBtn 
+          id="facebook"
+          iconSrc="./src/assets/facebook-icon.svg"
+          iconAlt="botão de compartilhar no facebook."
+        />
+        <IconBtn
+          id="instagram"
+          iconSrc="./src/assets/instagram-icon.svg"
+          iconAlt="botão de compartilhar no instagram."
+        />
       </div>
-    );
+    </div>
+  );
 }
 
 export function Menu()
@@ -73,5 +77,17 @@ export function Header()
       <Logo />
       <MenuAndMediaShare />
     </header>
+  );
+}
+
+export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconSize="1.5"})
+{
+  let style = "w-[" + iconSize.toString() + "rem]" + " h-[" + iconSize.toString() + "rem]"
+
+  return (
+    <button id={`${id}IconBtn`} className="m-0 b-0 p-0">
+      <img src={iconSrc} className={style}
+        alt={iconAlt}/>
+    </button>
   );
 }
