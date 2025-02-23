@@ -126,9 +126,13 @@ export function SectionTitle({ title })
     <div id={`setionTitle${title}Container`} 
       className="w-fit flex flex-col gap-[10px] items-center">
       <h2 id={`sectionTitle${title}Title`} 
-        ref={h2Ref} className="font-medium text-[1.5rem]">{title}</h2>
+        ref={h2Ref} 
+        className="font-medium text-[1.5rem]">{title}</h2>
       <hr id={`sectionTitle${title}Line`} 
-        ref={hrRef} style={{width: (hrWidth).toString() + "rem"}}/>
+        ref={hrRef} 
+        style={{width: (hrWidth).toString() + "rem"}}
+        className="border-main-black border-t-2"
+      />
     </div>
   );
 }
