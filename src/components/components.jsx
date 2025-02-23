@@ -7,6 +7,7 @@ export default {
     "menuAndMediaShare": MenuAndMediaShare,
     "header": Header,
     "main": Main,
+    "section": Section,
     "sectionTitle": SectionTitle,
 }
 
@@ -98,8 +99,17 @@ export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconSize="1.
 export function Main()
 {
   return (
-    <div>
-      <SectionTitle title="Sobre"/>
+    <Section title="Sobre"/>
+  );
+}
+
+export function Section({ title, children })
+{
+  return (
+    <div id={`section${title}`} 
+      className="flex flex-col gap-[2.5rem] items-center p-[1.25rem]">
+      <SectionTitle title={title} />
+      {children}
     </div>
   );
 }
