@@ -20,19 +20,19 @@ export function ShareOnSocialMedia()
       <p id="shareText" className="text-[16px] max-md:text-[14px] max-sm:text-[12px] content-center">
         Compartilhe:</p>
       <div id="socialMediaIcons" className="content-center">
-        <IconBtn 
+        <SocialMediaIconBtn 
           id="whats"
-          iconSrc="./src/assets/whats-icon.svg"
+          iconSrc="./src/assets/icons/whats-icon.svg"
           iconAlt="botão de compartilhar no whatsapp."
         />
-        <IconBtn 
+        <SocialMediaIconBtn 
           id="facebook"
-          iconSrc="./src/assets/facebook-icon.svg"
+          iconSrc="./src/assets/icons/facebook-icon.svg"
           iconAlt="botão de compartilhar no facebook."
         />
-        <IconBtn
+        <SocialMediaIconBtn
           id="instagram"
-          iconSrc="./src/assets/instagram-icon.svg"
+          iconSrc="./src/assets/icons/instagram-icon.svg"
           iconAlt="botão de compartilhar no instagram."
         />
       </div>
@@ -84,16 +84,27 @@ export function Header()
   );
 }
 
-export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconSize="1.5"})
+export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconStyle, btnStyle})
 {
-  let style = "w-[" + iconSize.toString() + "rem]" + " h-[" + iconSize.toString() + "rem]"
-
   return (
-    <button id={`${id}IconBtn`} className="m-0 b-0 p-0">
-      <img src={iconSrc} className={style}
+    <button id={`${id}IconBtn`} className={btnStyle}>
+      <img src={iconSrc} className={iconStyle}
         alt={iconAlt}/>
     </button>
   );
+}
+
+export function SocialMediaIconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconSize="1.5"})
+{
+  let style = "w-[" + iconSize.toString() + "rem]" + " h-[" + iconSize.toString() + "rem]"
+
+  return <IconBtn 
+    id={id} 
+    iconSrc={iconSrc} 
+    iconAlt={iconAlt} 
+    iconStyle={style} 
+    btnStyle="m-0 p-0 b-0"
+  />
 }
 
 export function Main()
@@ -143,6 +154,37 @@ export function SectionTitle({ title })
         style={{width: (hrWidth).toString() + "rem"}}
         className="border-main-black border-t-2"
       />
+    </div>
+  );
+}
+
+export function ImageTextCarousel()
+{
+  const imageText = [
+    {
+      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 1"}, 
+      "text": {"title": "title", "content": "content"}
+    },
+    {
+      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 2"}, 
+      "text": {"title": "title", "content": "content"}
+    },
+    {
+      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 3"}, "text": {"title": "title", "content": "content"}
+    },
+    {
+      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 4"}, 
+      "text": {"title": "title", "content": "content"}
+    },
+    {
+      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 5"}, 
+      "text": {"title": "title", "content": "content"}
+    },
+  ]
+
+  return (
+    <div id="imageTextCarousel">
+      
     </div>
   );
 }
