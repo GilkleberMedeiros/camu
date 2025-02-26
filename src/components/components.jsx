@@ -9,6 +9,7 @@ export default {
     "main": Main,
     "section": Section,
     "sectionTitle": SectionTitle,
+    "imageTextCarousel": ImageTextCarousel,
 }
 
 
@@ -110,7 +111,10 @@ export function SocialMediaIconBtn({ id=Symbol().toString(), iconSrc, iconAlt, i
 export function Main()
 {
   return (
-    <Section title="Sobre" children={<ImageTextCarousel />}/>
+    <div className="m-0 b-0 p-0">
+      <Section title="Sobre" children={<ImageTextCarousel />}/>
+      <Section title="Localização" />
+    </div>
   );
 }
 
