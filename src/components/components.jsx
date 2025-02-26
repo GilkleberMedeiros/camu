@@ -110,12 +110,24 @@ export function SocialMediaIconBtn({ id=Symbol().toString(), iconSrc, iconAlt, i
 
 export function Main()
 {
+  let physicalAdress = {
+    "name": "Camu", 
+    "state": "SP", 
+    "city": "Bauru", 
+    "bairro": "b428d40", 
+    "street": "Rua almeida dos santos",
+    "number": "442",
+    "cep": "22440-055",
+    "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
+  };
+
   return (
     <div className="m-0 b-0 p-0">
       <Section title="Sobre" children={<ImageTextCarousel />}/>
       <Section title="Localização">
         <CardsList>
-
+          <PhysicalAdressCard adressInfo={physicalAdress}>
+          </PhysicalAdressCard>
         </CardsList>
       </Section>
     </div>
@@ -371,6 +383,43 @@ export function CardsList({ id="", containerStyles, children })
   return (
     <div id={id} className={containerStyles || "flex w-[85%] p-[1.25rem] gap-[1rem]"}>
       {children}
+    </div>
+  );
+}
+
+export function PhysicalAdressCard({ adressInfo })
+{
+  return (
+    <div className="w-[18.75rem] min-w-auto flex flex-col px-[1.25rem] py-[0.875rem] gap-[0.875rem] 
+      border-main-black border-[1px]">
+      <h4 className="font-semibold text-[16px]">
+        {adressInfo.name}
+      </h4>
+      <div className="flex flex-col gap-[5px] items-start mb-[1.375rem]">
+        <span className="text-[12px]">
+          <span className="font-semibold">Estado </span>{adressInfo.state}
+        </span>
+        <span className="text-[12px]">
+          <span className="font-semibold">Cidade </span>{adressInfo.city}
+        </span>
+        <span className="text-[12px]">
+          <span className="font-semibold">Bairro </span>{adressInfo.bairro}
+        </span>
+        <span className="text-[12px]">{adressInfo.street}, {adressInfo.number}</span>
+        <span className="text-[12px]">
+          {adressInfo.cep}
+        </span>
+      </div>
+      <a 
+        className="w-fit text-[12px] underline decoration-dotted decoration-main-black 
+        underline-offset-[25%] decoration-[10%] hover:bg-secondary-black hover:text-main-white
+        hover:decoration-main-white"
+        href={adressInfo.viewOnMapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver no google maps
+      </a>
     </div>
   );
 }
