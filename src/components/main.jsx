@@ -18,7 +18,7 @@ export function Header()
 
 export function Main()
 {
-  let physicalAdress = {
+  const physicalAdress = {
     "name": "Camu", 
     "state": "SP", 
     "city": "Bauru", 
@@ -37,6 +37,9 @@ export function Main()
           <PhysicalAdressCard adressInfo={physicalAdress}>
           </PhysicalAdressCard>
         </CardsList>
+      </Section>
+      <Section title="Horário de funcionamento">
+
       </Section>
     </div>
   );
