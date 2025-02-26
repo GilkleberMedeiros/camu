@@ -1,6 +1,6 @@
 import { Logo } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
-import { Section } from "./containers.jsx";
+import { Section, ZebraOpeningHoursTable } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
 import { CardsList, PhysicalAdressCard } from "./cards";
 
@@ -29,6 +29,16 @@ export function Main()
     "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
   };
 
+  const openingHoursInfo = {
+    "monday": "07:00 - 12:00, 13:00 - 17:00",
+    "tuesday": "07:00 - 12:00, 13:00 - 17:00",
+    "wednesday": "07:00 - 12:00, 13:00 - 17:00",
+    "thursday": "07:00 - 12:00, 13:00 - 17:00",
+    "friday": "07:00 - 12:00, 13:00 - 17:00",
+    "saturday": "Fechado",
+    "sunday": "Fechado",
+  };
+
   return (
     <div className="m-0 b-0 p-0">
       <Section title="Sobre" children={<ImageTextCarousel />}/>
@@ -39,7 +49,7 @@ export function Main()
         </CardsList>
       </Section>
       <Section title="Horário de funcionamento">
-
+        <ZebraOpeningHoursTable openingHoursInfo={openingHoursInfo}/>
       </Section>
     </div>
   );

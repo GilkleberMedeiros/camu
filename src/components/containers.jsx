@@ -14,3 +14,76 @@ export function Section({ title, children })
     </div>
   );
 }
+
+export function ZebraOpeningHoursTable({ openingHoursInfo })
+{
+  return (
+    <table className="w-[28.126rem]">
+      <tbody>
+        <tr 
+          id="tableRowSegunda" 
+          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]">Segunda-feira</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.monday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowTerca" 
+          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Terça-feira</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.tuesday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowQuarta" 
+          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Quarta-feira</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.wednesday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowQuinta" 
+          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Quinta-feira</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.thursday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowSexta" 
+          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Sexta-feira</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.friday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowSabado" 
+          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Sabádo</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.saturday}
+          </td>
+        </tr>
+        <tr 
+          id="tableRowDomingo" 
+          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px]"
+        >
+          <td className="inline-flex justify-center w-[50%]" >Domingo</td>
+          <td className="inline-flex justify-center w-[50%]" >
+            {openingHoursInfo.sunday}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
+}
