@@ -357,8 +357,8 @@ export function ImageTextCarousel()
                 style={{ width: carouselItemWidthClassStr, marginLeft: "0%", opacity: index === 0 ? "1" : "0.15" }}
                 ref={index === 0 ? firstCarouselTextItemRef : null}>
 
-                <h3 className="text-[20px] font-medium">{item.text.title}</h3>
-                <p className="text-[14px] text-wrap">{item.text.content}</p>
+                <h3 className="text-[1.25rem] font-medium">{item.text.title}</h3>
+                <p className="text-[0.875rem] text-wrap">{item.text.content}</p>
               </div>
               );
             })}
@@ -392,26 +392,26 @@ export function PhysicalAdressCard({ adressInfo })
   return (
     <div className="w-[18.75rem] min-w-auto flex flex-col px-[1.25rem] py-[0.875rem] gap-[0.875rem] 
       border-main-black border-[1px]">
-      <h4 className="font-semibold text-[16px]">
+      <h4 className="font-semibold text-[1rem]">
         {adressInfo.name}
       </h4>
       <div className="flex flex-col gap-[5px] items-start mb-[1.375rem]">
-        <span className="text-[12px]">
+        <span className="text-[0.75rem]">
           <span className="font-semibold">Estado </span>{adressInfo.state}
         </span>
-        <span className="text-[12px]">
+        <span className="text-[0.75rem]">
           <span className="font-semibold">Cidade </span>{adressInfo.city}
         </span>
-        <span className="text-[12px]">
+        <span className="text-[0.75rem]">
           <span className="font-semibold">Bairro </span>{adressInfo.bairro}
         </span>
-        <span className="text-[12px]">{adressInfo.street}, {adressInfo.number}</span>
-        <span className="text-[12px]">
+        <span className="text-[0.75rem]">{adressInfo.street}, {adressInfo.number}</span>
+        <span className="text-[0.75rem]">
           {adressInfo.cep}
         </span>
       </div>
       <a 
-        className="w-fit text-[12px] underline decoration-dotted decoration-main-black 
+        className="w-fit text-[0.75rem] underline decoration-dotted decoration-main-black 
         underline-offset-[25%] decoration-[10%] hover:bg-secondary-black hover:text-main-white
         hover:decoration-main-white"
         href={adressInfo.viewOnMapsUrl}
