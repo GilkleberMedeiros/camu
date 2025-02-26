@@ -45,10 +45,10 @@ export function Menu()
 {
     return (
         <nav id="menu" className="flex flex-wrap content-center px-[1.25rem] py-[0.75rem] gap-[1rem] font-medium">
-          <a href="" className="text-[0.75rem]">Sobre</a>
-          <a href="" className="text-[0.75rem]">Localização</a>
-          <a href="" className="text-[0.75rem]">Horário de funcionamento</a>
-          <a href="" className="text-[0.75rem]">Entre em contato</a>
+          <a href="#sectionSobre" className="text-[0.75rem]">Sobre</a>
+          <a href="#sectionLocalização" className="text-[0.75rem]">Localização</a>
+          <a href="#sectionHorarioDeFuncionamento" className="text-[0.75rem]">Horário de funcionamento</a>
+          <a href="#sectionEntreEmContato" className="text-[0.75rem]">Entre em contato</a>
         </nav>
     );
 }
