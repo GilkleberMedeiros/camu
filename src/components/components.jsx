@@ -113,7 +113,11 @@ export function Main()
   return (
     <div className="m-0 b-0 p-0">
       <Section title="Sobre" children={<ImageTextCarousel />}/>
-      <Section title="Localização" />
+      <Section title="Localização">
+        <CardsList>
+
+        </CardsList>
+      </Section>
     </div>
   );
 }
@@ -358,6 +362,15 @@ export function ImageTextCarousel()
         btnStyle="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
         onClick={carouselBtnsOnClick(-1)}
       />
+    </div>
+  );
+}
+
+export function CardsList({ id="", containerStyles, children })
+{
+  return (
+    <div id={id} className={containerStyles || "flex w-[85%] p-[1.25rem] gap-[1rem]"}>
+      {children}
     </div>
   );
 }
