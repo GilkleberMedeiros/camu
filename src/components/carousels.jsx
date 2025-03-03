@@ -42,19 +42,19 @@ export function ImageTextCarousel()
     },
   ]
 
-  let len = imageText.length;
+  const len = imageText.length;
   // Carosuel expanded container dynamic width
-  let expandedContainerWidth = 100 * len;
-  let expandedContainerWidthClassStr = expandedContainerWidth.toString() + "%";
+  const expandedContainerWidth = 100 * len;
+  const expandedContainerWidthClassStr = expandedContainerWidth.toString() + "%";
 
   // Carousel item dynamic width
-  let carouselItemWidth = 100/len;
-  let carouselItemWidthClassStr = carouselItemWidth.toString() + "%";
+  const carouselItemWidth = 100/len;
+  const carouselItemWidthClassStr = carouselItemWidth.toString() + "%";
 
-  let textSolidOpacity = "1";
-  let textOpaqueOpacity = "0.15";
+  const textSolidOpacity = "1";
+  const textOpaqueOpacity = "0.15";
 
-  let carouselBtnsOnClick = (() => {
+  const carouselBtnsOnClick = (() => {
     // Loading variables
     let count = 1; // next to move ref
     let countMax = len;
@@ -178,7 +178,7 @@ export function ImageTextCarousel()
                 key={index} 
                 id={"carouselTextItem"+ (index + 1).toString()}
                 className="m-0 h-[350px] flex flex-col gap-[1rem] justify-start items-start 
-                p-[1.125rem] duration-1250 ease-in-out"
+                p-[1.125rem] duration-1250 ease-in-out overflow-y-auto"
                 style={{ width: carouselItemWidthClassStr, marginLeft: "0%", opacity: index === 0 ? "1" : "0.15" }}
                 ref={index === 0 ? firstCarouselTextItemRef : null}>
 
