@@ -1,5 +1,5 @@
 import { SectionTitle  } from "./titles.jsx";
-import { normalizeStrToId } from "../scripts.js/utils.js";
+import { normalizeStrToId } from "../scripts/utils.js";
 
 
 export function Section({ title, children })

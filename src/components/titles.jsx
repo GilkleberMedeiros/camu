@@ -1,6 +1,6 @@
 import React from "react";
 
-import { normalizeStrToId  } from "../scripts.js/utils";
+import { normalizeStrToId  } from "../scripts/utils";
 
 
 export function SectionTitle({ title })
