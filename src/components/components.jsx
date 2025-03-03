@@ -19,5 +19,8 @@ export default {
   "imageTextCarousel": carousels.ImageTextCarousel,
   "cardsList": cards.CardsList,
   "physicalAdressCard": cards.PhysicalAdressCard,
+  "zebraOpeningHoursTable": containers.ZebraOpeningHoursTable,
+  "floatingBtnsContainer": containers.FloatingBtnsContainer,
+  "contactTextBox": containers.ContactTextBox,
 }
 

@@ -96,3 +96,14 @@ export function FloatingBtnsContainer({ children })
     </div>
   );
 }
+
+export function ContactTextBox({ style="", children })
+{
+  return (
+    <div className={
+      style || 
+      "w-[21.5rem] flex flex-col justify-center items-center gap-[2.875rem] px-[0.6875rem] py-[1.375rem] "}>
+      {children}
+    </div>
+  );
+}

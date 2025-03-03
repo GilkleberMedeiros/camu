@@ -1,6 +1,6 @@
 import { Logo, IconBtn } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
-import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer } from "./containers.jsx";
+import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
 import { CardsList, PhysicalAdressCard } from "./cards";
 
@@ -40,7 +40,7 @@ export function Main()
   };
 
   const phoneNumber = "5511000000000";
-  const email = "example@gmail.com"
+  const email = "example@gmail.com";
 
   return (
     <div className="m-0 b-0 p-0">
@@ -76,6 +76,11 @@ export function Main()
       </Section>
       <Section title="Horário de funcionamento">
         <ZebraOpeningHoursTable openingHoursInfo={openingHoursInfo}/>
+      </Section>
+      <Section title="Entre em contato">
+        <ContactTextBox>
+          
+        </ContactTextBox>
       </Section>
     </div>
   );
