@@ -87,3 +87,12 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
     </table>
   );
 }
+
+export function FloatingBtnsContainer({ children })
+{
+  return (
+    <div className="fixed right-[22px] max-sm:right-[11px] bottom-[22px] max-sm:bottom-[11px] flex flex-col gap-[1.375rem]">
+      {children}
+    </div>
+  );
+}

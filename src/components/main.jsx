@@ -1,6 +1,6 @@
-import { Logo } from "./icons.jsx";
+import { Logo, IconBtn } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
-import { Section, ZebraOpeningHoursTable } from "./containers.jsx";
+import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
 import { CardsList, PhysicalAdressCard } from "./cards";
 
@@ -39,8 +39,34 @@ export function Main()
     "sunday": "Fechado",
   };
 
+  const phoneNumber = "5511000000000";
+  const email = "example@gmail.com"
+
   return (
     <div className="m-0 b-0 p-0">
+      <FloatingBtnsContainer>
+        <IconBtn
+          id="floatingWhats"
+          iconSrc="src\assets\icons\whats-icon.svg"
+          iconAlt="Mande uma mensagem no whatsapp."
+          iconStyle="size-[2.8125rem]" 
+          btnStyle="size-[4.375rem] flex justify-center items-center
+          rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
+          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px]"
+          onClick={() => window.open(`https://wa.me/${phoneNumber}`, '_blank')}
+        />
+        <IconBtn
+          id="floatingMail"
+          iconSrc="src\assets\icons\mail.svg"
+          iconAlt="Mande um email."
+          iconStyle="size-[2.8125rem]" 
+          btnStyle="size-[4.375rem] flex justify-center items-center
+          rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
+          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px]"
+          onClick={() => window.open(`mailto:${email}`, '_blank')}
+        />
+      </FloatingBtnsContainer>
+
       <Section title="Sobre" children={<ImageTextCarousel />}/>
       <Section title="Localização">
         <CardsList>
