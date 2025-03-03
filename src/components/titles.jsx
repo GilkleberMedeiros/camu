@@ -12,7 +12,7 @@ export function SectionTitle({ title })
   const hrRef = React.useRef(null);
   const [hrWidth, setHrWidth] = React.useState(300/standardRootFontSize); // 18.75rem
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (
       h2Ref.current && h2Ref.current.offsetWidth >= 
       ((hrWidth * standardRootFontSize) - 50)

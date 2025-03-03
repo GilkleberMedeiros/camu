@@ -16,7 +16,9 @@
 
 @font-face {
   font-family: inter;
-  src: url(./assets/fonts/Inter.zip);
+  src: url("./assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @theme {
