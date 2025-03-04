@@ -53,7 +53,7 @@ export function Main()
           iconStyle="size-[2.8125rem]" 
           btnStyle="size-[4.375rem] flex justify-center items-center
           rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
-          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px]"
+          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px] cursor-pointer"
           onClick={() => window.open(`https://wa.me/${phoneNumber}`, '_blank')}
         />
         <IconBtn
@@ -63,7 +63,7 @@ export function Main()
           iconStyle="size-[2.8125rem]" 
           btnStyle="size-[4.375rem] flex justify-center items-center
           rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
-          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px]"
+          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px] cursor-pointer"
           onClick={() => window.open(`mailto:${email}`, '_blank')}
         />
       </FloatingBtnsContainer>
