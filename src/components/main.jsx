@@ -3,6 +3,7 @@ import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
 import { CardsList, PhysicalAdressCard } from "./cards";
+import { Link } from "./links.jsx";
 
 
 export function Header()
@@ -79,7 +80,19 @@ export function Main()
       </Section>
       <Section title="Entre em contato">
         <ContactTextBox>
-          
+          <span className="text-[0.8125rem] text-center">
+            <Link href={`mailto:${email}`} style="text-[0.8125rem]">Mande um email</Link> em {email}
+          </span>
+          <span className="text-[0.9375rem] font-medium">
+            OU
+          </span>
+          <span className="text-[0.8125rem] text-center">
+            Ligue,&nbsp;
+            <Link href={`https://wa.me/${phoneNumber}`} style="text-[0.8125rem]">
+              mande uma mensagem
+            </Link>&nbsp;
+            pelo whatsapp em {phoneNumber}
+          </span>
         </ContactTextBox>
       </Section>
     </div>

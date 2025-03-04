@@ -36,8 +36,9 @@ export function PhysicalAdressCard({ adressInfo })
       <Link 
         href={adressInfo.viewOnMapsUrl}
         rel="noopener noreferrer"
-        text={"Ver no google maps"}
-      />
+      >
+        Ver no google maps
+      </Link>
     </div>
   );
 }
