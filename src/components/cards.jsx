@@ -1,3 +1,6 @@
+import { Link } from "./links.jsx";
+
+
 export function CardsList({ id="", containerStyles, children })
 {
   return (
@@ -30,16 +33,11 @@ export function PhysicalAdressCard({ adressInfo })
           {adressInfo.cep}
         </span>
       </div>
-      <a 
-        className="w-fit text-[0.75rem] underline decoration-dotted decoration-main-black 
-        underline-offset-[25%] decoration-[10%] hover:bg-secondary-black hover:text-main-white
-        hover:decoration-main-white"
+      <Link 
         href={adressInfo.viewOnMapsUrl}
-        target="_blank"
         rel="noopener noreferrer"
-      >
-        Ver no google maps
-      </a>
+        text={"Ver no google maps"}
+      />
     </div>
   );
 }
