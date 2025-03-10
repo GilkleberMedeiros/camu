@@ -1,4 +1,6 @@
-import { SocialMediaIconBtn } from "./icons.jsx";
+import React from "react";
+
+import { Icon } from "./icons.jsx";
 
 
 export function Menu()
@@ -13,30 +15,55 @@ export function Menu()
     );
 }
 
-export function ShareOnSocialMedia()
+export function ShareOnSocialMedia({ socialMediaShareLinks })
 {
+  const floatMenuContentRef = React.useRef(null);
+
+  const toggleMenuDisplay = () => {
+    if (floatMenuContentRef.current) {
+      const currentDisplay = floatMenuContentRef.current.style.display;
+      floatMenuContentRef.current.style.display = currentDisplay === "none" ? "block" : "none";
+    }
+  };
+
   return (
-    <div id="shareOnSocialMedia" className="flex justify-stretch content-center 
-      gap-[5px] px-[10px] py-[5px]">
-      <p id="shareText" className="text-[16px] max-md:text-[14px] max-sm:text-[12px] content-center">
-        Compartilhe:
-      </p>
-      <div id="socialMediaIcons" className="content-center">
-        <SocialMediaIconBtn 
-          id="whats"
-          iconSrc="./src/assets/icons/whats-icon.svg"
-          iconAlt="botão de compartilhar no whatsapp."
-        />
-        <SocialMediaIconBtn 
-          id="facebook"
-          iconSrc="./src/assets/icons/facebook-icon.svg"
-          iconAlt="botão de compartilhar no facebook."
-        />
-        <SocialMediaIconBtn
-          id="instagram"
-          iconSrc="./src/assets/icons/instagram-icon.svg"
-          iconAlt="botão de compartilhar no instagram."
-        />
+    <div 
+      id="floatMenu"
+      className="
+        relative size-fit
+      "
+    >
+      <button
+        className="m-0 b-0 p-[5px] border-[2px] border-main-black rounded-[10px]"
+        onClick={toggleMenuDisplay}
+      >
+        {/* temporary whats icon */}
+        <Icon src="./src/assets/icons/whats-icon.svg" style="size-[24px]" />
+      </button>
+      <div 
+        id="floatMenuContent"
+        ref={floatMenuContentRef}
+        className="
+          absolute top-[110%] hidden space-y-[2px] w-[125px]
+          p-[4px] border-main-black border-1 bg-main-white 
+        "
+      >
+        {socialMediaShareLinks.map(
+          (v, i) => {
+            return (
+              <button 
+                key={i} 
+                className="
+                 flex gap-[4px] justify-center items-center cursor-pointer hover:bg-gray-100
+                "
+                onClick={v.onClick}
+              >
+                <span className="font-light text-[11px] ml-[4px]">Compartilhe no</span>
+                <Icon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px]"} />
+              </button>
+            );
+          }
+        )}
       </div>
     </div>
   );
@@ -44,9 +71,33 @@ export function ShareOnSocialMedia()
 
 export function MenuAndMediaShare()
 {
+  const socialMediaShareLinks = [
+    {
+      "src": "./src/assets/icons/whats-icon.svg", 
+      "alt": "Botão de compartilhar no whatsapp", 
+      "onClick": () => {}
+    },
+    {
+      "src": "./src/assets/icons/instagram-icon.svg",
+      "alt": "Botão de compartilhar no instagram",
+      "onClick": () => {}
+    },
+    {
+      "src": "./src/assets/icons/tiktok-icon.svg",
+      "alt": "Botão de compartilhar no facebook",
+      "onClick": () => {}
+    },
+    {
+      "src": "./src/assets/icons/facebook-icon.svg",
+      "alt": "Botão de compartilhar no facebook",
+      "onClick": () => {}
+    }
+  ]
+  const shareMenuOn = true;
+
   return (
-    <div id="menuAndMediaShare" className="flex content-center gap-[0.75rem]">
-      <ShareOnSocialMedia />
+    <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem]">
+      {shareMenuOn ? <ShareOnSocialMedia socialMediaShareLinks={socialMediaShareLinks} /> : null}
       <Menu />
     </div>
   );
