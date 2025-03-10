@@ -1,3 +1,10 @@
+export function Icon({ id="", src, alt, style, children, ...rest })
+{
+  return (
+    <img id={id ? `${id}Icon` : ""} src={src} alt={alt} className={style} {...rest} />
+  );
+}
+
 export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconStyle, btnStyle, onClick=null })
 {
   return (
