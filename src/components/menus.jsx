@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ImageIcon } from "./icons.jsx";
+import { ImageIcon, IconShare3 } from "./icons.jsx";
 
 
 export function Menu() {
@@ -95,8 +95,7 @@ export function ShareOnSocialMedia({ socialMediaShareLinks })
         className="m-0 b-0 p-[5px] border-[2px] border-main-black rounded-[10px]"
         onClick={toggleMenuDisplay}
       >
-        {/* temporary whats icon */}
-        <ImageIcon src="./src/assets/icons/whats-icon.svg" style="size-[24px]" />
+        <IconShare3 />
       </button>
       <div 
         id="floatMenuContent"
