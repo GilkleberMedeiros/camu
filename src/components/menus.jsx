@@ -73,7 +73,7 @@ export function Menu() {
   );
 }
 
-export function ShareOnSocialMedia({ socialMediaShareLinks })
+export function ShareMenu({ socialMediaShareLinks })
 {
   const floatMenuContentRef = React.useRef(null);
 
@@ -154,7 +154,7 @@ export function MenuAndMediaShare()
 
   return (
     <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem] max-sm:gap-[40px] max-c-s:gap-[20px]">
-      {shareMenuOn ? <ShareOnSocialMedia socialMediaShareLinks={socialMediaShareLinks} /> : null}
+      {shareMenuOn ? <ShareMenu socialMediaShareLinks={socialMediaShareLinks} /> : null}
       <Menu />
     </div>
   );

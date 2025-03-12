@@ -10,7 +10,7 @@ import logo from "./logo.jsx";
 
 export default {
   "header": main.Header,
-  "shareOnSocialMedia": menus.ShareOnSocialMedia ,
+  "shareOnSocialMedia": menus.ShareMenu ,
   "menu": menus.Menu ,
   "logo.Container": logo.Container,
   "logo.Icon": logo.Icon,
