@@ -1,17 +1,24 @@
-import { Logo, IconBtn } from "./icons.jsx";
+import { IconBtn } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
 import { CardsList, PhysicalAdressCard } from "./cards";
 import { Link } from "./links.jsx";
+import logo from "./logo.jsx";
 
 
 export function Header()
 {
+  let headerLogo = "./src/assets/tmp-logo.svg";
+  let logoTitle = "Camu";
+
   return (
     <header className="p-[1.125rem] flex justify-between 
       content-center border-b-2 border-b-main-black shadow-main-black/25 shadow-[0_4px_2px_0]">
-      <Logo />
+      <logo.Container>
+        <logo.Icon src={headerLogo} />
+        <logo.Title title={logoTitle} />
+      </logo.Container>
       <MenuAndMediaShare />
     </header>
   );
