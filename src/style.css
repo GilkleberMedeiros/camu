@@ -22,9 +22,16 @@
 }
 
 @theme {
+  /* Color variables */
   --color-main-black: #09090B;
   --color-main-white: #FAFAFA;
   --color-secondary-black: #27272A;
   --color-secondary-white: #E4E4E7;
+
+  /* Font variables */
   --font-inter: inter;
+
+  /* Breakpoints */
+  --breakpoint-c-s: 25.625rem;
+  --breakpoint-c-xs: 20.3125rem;
 }
