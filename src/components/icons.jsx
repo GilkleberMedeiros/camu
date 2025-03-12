@@ -32,9 +32,9 @@ export function Logo()
 {
   return (
     <div id="logo" className="flex items-center gap-[10px] grow-0 font-medium">
-      <img id="logoImg" className="w-[50px] h-[50px] max-sm:w-[38px] max-sm:h-[38px]" 
+      <img id="logoImg" className="w-[60px] h-[60px] max-c-s:w-[50px] max-c-s:h-[50px]" 
         src="./src/assets/tmp-logo.svg" alt="logo"/>
-      <h1 id="logoTitle" className="text-[30px] max-md:text-[25px] max-sm:text-[18px]">Camu</h1>
+      <h1 id="logoTitle" className="text-[34px] max-c-s:text-[30px]">Camu</h1>
     </div>
   );
 }
