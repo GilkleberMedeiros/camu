@@ -154,7 +154,7 @@ export function MenuAndMediaShare()
   const shareMenuOn = true;
 
   return (
-    <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem]">
+    <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem] max-sm:gap-[40px] max-c-s:gap-[20px]">
       {shareMenuOn ? <ShareOnSocialMedia socialMediaShareLinks={socialMediaShareLinks} /> : null}
       <Menu />
     </div>
