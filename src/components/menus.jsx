@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Icon } from "./icons.jsx";
+import { ImageIcon } from "./icons.jsx";
 
 
 export function Menu() {
@@ -96,7 +96,7 @@ export function ShareOnSocialMedia({ socialMediaShareLinks })
         onClick={toggleMenuDisplay}
       >
         {/* temporary whats icon */}
-        <Icon src="./src/assets/icons/whats-icon.svg" style="size-[24px]" />
+        <ImageIcon src="./src/assets/icons/whats-icon.svg" style="size-[24px]" />
       </button>
       <div 
         id="floatMenuContent"
@@ -117,7 +117,7 @@ export function ShareOnSocialMedia({ socialMediaShareLinks })
                 onClick={v.onClick}
               >
                 <span className="font-light text-[11px] ml-[4px]">Compartilhe no</span>
-                <Icon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px]"} />
+                <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px]"} />
               </button>
             );
           }

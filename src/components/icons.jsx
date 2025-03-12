@@ -1,7 +1,8 @@
-export function Icon({ id="", src, alt, style, children, ...rest })
+export function ImageIcon({ id="", src, alt, style, children, ...rest })
 {
+  /* Generic and customizable icon */
   return (
-    <img id={id ? `${id}Icon` : ""} src={src} alt={alt} className={style} {...rest} />
+    <img id={id ? `${id}ImageIcon` : ""} src={src} alt={alt} className={style} {...rest} />
   );
 }
 
