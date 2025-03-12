@@ -1,75 +1,76 @@
 import React from "react";
 
 import { ImageIcon, IconShare3 } from "./icons.jsx";
+import { MenuLink } from "./links.jsx";
 
 
 export function Menu() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-      <>
-          {/* Burger Menu Button */}
-          <button 
-              onClick={() => setIsOpen(!isOpen)}
-              className={`hidden max-sm:flex flex-col justify-center items-center
-              w-[38px] h-[38px] border-2 border-main-black
-              rounded-[10px] relative z-50
-              ${isOpen ? "border-main-black/0" : ""}`}
-          >
-              <span className={`
-                  w-[24px] h-[2px] bg-main-black
-                  transition-all duration-300 ease-in-out
-                  ${isOpen ? 'absolute top-[50%] rotate-45' : ''}
-              `}></span>
-              <span className={`
-                  w-[24px] h-[2px] bg-main-black my-[6px]
-                  transition-all duration-300 ease-in-out
-                  ${isOpen ? 'opacity-0' : ''}
-              `}></span>
-              <span className={`
-                  w-[24px] h-[2px] bg-main-black
-                  transition-all duration-300 ease-in-out
-                  ${isOpen ? 'position absolute top-[50%] -rotate-45' : ''}
-              `}></span>
-          </button>
+    <>
+      {/* Burger Menu Button */}
+      <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className={`hidden max-sm:flex flex-col justify-center items-center
+          w-[38px] h-[38px] border-2 border-main-black
+          rounded-[10px] relative z-50
+          ${isOpen ? "border-main-black/0" : ""}`}
+      >
+          <span className={`
+              w-[24px] h-[2px] bg-main-black
+              transition-all duration-300 ease-in-out
+              ${isOpen ? 'absolute top-[50%] rotate-45' : ''}
+          `}></span>
+          <span className={`
+              w-[24px] h-[2px] bg-main-black my-[6px]
+              transition-all duration-300 ease-in-out
+              ${isOpen ? 'opacity-0' : ''}
+          `}></span>
+          <span className={`
+              w-[24px] h-[2px] bg-main-black
+              transition-all duration-300 ease-in-out
+              ${isOpen ? 'position absolute top-[50%] -rotate-45' : ''}
+          `}></span>
+      </button>
 
-          {/* Desktop Menu */}
-          <nav className="
-            max-sm:hidden flex flex-wrap content-center px-[20px] py-[12px] gap-[16px] font-medium
-            "
-          >
-              <a href="#sectionSobre" className="text-[0.75rem]">Sobre</a>
-              <a href="#sectionLocalização" className="text-[0.75rem]">Localização</a>
-              <a href="#sectionHorarioDeFuncionamento" className="text-[0.75rem]">Horário de funcionamento</a>
-              <a href="#sectionEntreEmContato" className="text-[0.75rem]">Entre em contato</a>
-          </nav>
+      {/* Desktop Menu */}
+      <nav className="
+        max-sm:hidden flex flex-wrap content-center px-[20px] py-[12px] gap-[16px] font-medium
+        "
+      >
+        <MenuLink href="#sectionSobre" style="text-[0.75rem]">Sobre</MenuLink>
+        <MenuLink href="#sectionLocalização" style="text-[0.75rem]">Localização</MenuLink>
+        <MenuLink href="#sectionHorarioDeFuncionamento" style="text-[0.75rem]">Horário de funcionamento</MenuLink>
+        <MenuLink href="#sectionEntreEmContato" style="text-[0.75rem]">Entre em contato</MenuLink>
+      </nav>
 
-          {/* Mobile Side Menu */}
-          <div className={`
-              fixed top-0 right-0 h-screen w-1/2
-              bg-main-white shadow-lg
-              transform transition-transform duration-300 ease-in-out
-              max-sm:flex flex-col items-center px-[20px] py-[25px]
-              border-l-1 border-main-black
-              ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-              hidden z-40
-          `}>
-              <div className="w-full h-full flex flex-col justify-start items-center gap-[15px] mt-[26%]">
-                <a href="#sectionSobre" className="text-center text-[12px]">Sobre</a>
-                <a href="#sectionLocalização" className="text-center text-[12px]">Localização</a>
-                <a href="#sectionHorarioDeFuncionamento" className="text-center text-[12px]">Horário de funcionamento</a>
-                <a href="#sectionEntreEmContato" className="text-center text-[12px]">Entre em contato</a>
-              </div>
+      {/* Mobile Side Menu */}
+      <div className={`
+          fixed top-0 right-0 h-screen w-1/2
+          bg-main-white shadow-lg
+          transform transition-transform duration-300 ease-in-out
+          max-sm:flex flex-col items-center px-[20px] py-[25px]
+          border-l-1 border-main-black
+          ${isOpen ? 'translate-x-0' : 'translate-x-full'}
+          hidden z-40
+      `}>
+          <div className="w-full h-full flex flex-col justify-start items-center gap-[15px] mt-[26%]">
+            <MenuLink href="#sectionSobre" style="text-center text-[12px]">Sobre</MenuLink>
+            <MenuLink href="#sectionLocalização" style="text-center text-[12px]">Localização</MenuLink>
+            <MenuLink href="#sectionHorarioDeFuncionamento" style="text-center text-[12px]">Horário de funcionamento</MenuLink>
+            <MenuLink href="#sectionEntreEmContato" style="text-center text-[12px]">Entre em contato</MenuLink>
           </div>
+      </div>
 
-          {/* Overlay */}
-          {isOpen && (
-              <div 
-                  className="hidden max-sm:block fixed inset-0 bg-main-black/25 bg-opacity-50 z-30"
-                  onClick={() => setIsOpen(false)}
-              />
-          )}
-      </>
+      {/* Overlay */}
+      {isOpen && (
+          <div 
+              className="hidden max-sm:block fixed inset-0 bg-main-black/25 bg-opacity-50 z-30"
+              onClick={() => setIsOpen(false)}
+          />
+      )}
+    </>
   );
 }
 
