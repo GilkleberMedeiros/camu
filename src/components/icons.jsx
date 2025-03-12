@@ -16,19 +16,6 @@ export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconStyle, b
   );
 }
 
-export function SocialMediaIconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconSize="1.5"})
-{
-  let style = "w-[" + iconSize.toString() + "rem]" + " h-[" + iconSize.toString() + "rem]"
-
-  return <IconBtn 
-    id={id} 
-    iconSrc={iconSrc} 
-    iconAlt={iconAlt} 
-    iconStyle={style} 
-    btnStyle="m-0 p-0 b-0"
-  />
-}
-
 export function Logo()
 {
   return (
