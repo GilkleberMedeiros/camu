@@ -25,5 +25,6 @@ export default {
   "zebraOpeningHoursTable": containers.ZebraOpeningHoursTable,
   "floatingBtnsContainer": containers.FloatingBtnsContainer,
   "contactTextBox": containers.ContactTextBox,
+  "adviceUnfinishedAppCard": cards.AdviceUnfinishedAppCard,
 }
 

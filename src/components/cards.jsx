@@ -1,4 +1,5 @@
 import { Link } from "./links.jsx";
+import packageData from "../../package.json"
 
 
 export function CardsList({ id="", containerStyles, children })
@@ -39,6 +40,20 @@ export function PhysicalAdressCard({ adressInfo })
       >
         Ver no google maps
       </Link>
+    </div>
+  );
+}
+
+export function AdviceUnfinishedAppCard()
+{
+  return (
+    <div 
+      className="
+        fixed bottom-3.5 left-10 h-fit w-fit text-[12px] text-white p-2 bg-secondary-black border-4 
+        border-secondary-white rounded-xl
+      "
+    >
+      <p>This project is unfinished. Currently on version {packageData.version}.</p>
     </div>
   );
 }
