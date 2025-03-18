@@ -2,6 +2,9 @@ import React from "react";
 
 import { IconBtn } from "./icons.jsx"
 
+import chevronRight from "/assets/icons/chevron-right.svg";
+import chevronLeft from "/assets/icons/chevron-left.svg";
+
 
 export function ImageTextCarousel()
 {
@@ -127,7 +130,7 @@ export function ImageTextCarousel()
     <div id="imageTextCarouselContainer" className="w-[90%] h-[350px] flex justify-center items-center gap-[2.5rem]">
       <IconBtn 
         id="carouselLeftArrow" 
-        iconSrc="./src/assets/icons/chevron-left.svg" 
+        iconSrc={chevronLeft}
         iconAlt="Botão seta esquerda do slider (para à esquerda)" 
         iconStyle="w-[1.5625rem] h-[1.5625rem]" 
         btnStyle="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
@@ -193,7 +196,7 @@ export function ImageTextCarousel()
 
       <IconBtn 
         id="carouselRightArrow" 
-        iconSrc="./src/assets/icons/chevron-right.svg" 
+        iconSrc={chevronRight}
         iconAlt="Botão seta direita do slider (para à direita)" 
         iconStyle="w-[1.5625rem] h-[1.5625rem]" 
         btnStyle="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"

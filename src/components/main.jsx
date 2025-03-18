@@ -6,17 +6,21 @@ import { CardsList, PhysicalAdressCard } from "./cards";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
 
+// Vite provided paths
+import logoIcon from "/assets/tmp-logo.svg";
+import whatsIcon from "/assets/icons/whats-icon.svg";
+import mailIcon from "/assets/icons/mail.svg";
+
 
 export function Header()
 {
-  let headerLogo = "./src/assets/tmp-logo.svg";
   let logoTitle = "Camu";
 
   return (
     <header className="p-[1.125rem] flex justify-between 
       content-center border-b-2 border-b-main-black shadow-main-black/25 shadow-[0_4px_2px_0]">
       <logo.Container>
-        <logo.Icon src={headerLogo} />
+        <logo.Icon src={logoIcon} />
         <logo.Title title={logoTitle} />
       </logo.Container>
       <MenuAndMediaShare />
@@ -55,7 +59,7 @@ export function Main()
       <FloatingBtnsContainer>
         <IconBtn
           id="floatingWhats"
-          iconSrc="src\assets\icons\whats-icon.svg"
+          iconSrc={whatsIcon}
           iconAlt="Mande uma mensagem no whatsapp."
           iconStyle="size-[2.8125rem]" 
           btnStyle="size-[4.375rem] flex justify-center items-center
@@ -65,7 +69,7 @@ export function Main()
         />
         <IconBtn
           id="floatingMail"
-          iconSrc="src\assets\icons\mail.svg"
+          iconSrc={mailIcon}
           iconAlt="Mande um email."
           iconStyle="size-[2.8125rem]" 
           btnStyle="size-[4.375rem] flex justify-center items-center
