@@ -3,6 +3,12 @@ import React from "react";
 import { ImageIcon, IconShare3 } from "./icons.jsx";
 import { MenuLink } from "./links.jsx";
 
+// Vite provided paths
+import whatsIcon from "/assets/icons/whats-icon.svg";
+import instagramIcon from "/assets/icons/instagram-icon.svg";
+import tiktokIcon from "/assets/icons/tiktok-icon.svg";
+import facebookIcon from "/assets/icons/facebook-icon.svg";
+
 
 export function Menu() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -131,22 +137,22 @@ export function MenuAndMediaShare()
 {
   const socialMediaShareLinks = [
     {
-      "src": "./src/assets/icons/whats-icon.svg", 
+      "src": whatsIcon, 
       "alt": "Botão de compartilhar no whatsapp", 
       "onClick": () => {}
     },
     {
-      "src": "./src/assets/icons/instagram-icon.svg",
+      "src": instagramIcon,
       "alt": "Botão de compartilhar no instagram",
       "onClick": () => {}
     },
     {
-      "src": "./src/assets/icons/tiktok-icon.svg",
+      "src": tiktokIcon,
       "alt": "Botão de compartilhar no facebook",
       "onClick": () => {}
     },
     {
-      "src": "./src/assets/icons/facebook-icon.svg",
+      "src": facebookIcon,
       "alt": "Botão de compartilhar no facebook",
       "onClick": () => {}
     }
