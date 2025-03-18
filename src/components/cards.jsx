@@ -46,14 +46,25 @@ export function PhysicalAdressCard({ adressInfo })
 
 export function AdviceUnfinishedAppCard()
 {
+  const screenDebug = false;
+  const root = document.getElementsByTagName("html")[0];
+  const width = root.clientWidth;
+  const height = root.clientHeight;
+
   return (
     <div 
       className="
-        fixed bottom-3.5 left-10 h-fit w-fit text-[12px] text-white p-2 bg-secondary-black border-4 
-        border-secondary-white rounded-xl
+        fixed bottom-3.5 left-10 h-fit w-fit text-[0.75rem] text-wrap text-white p-2 bg-secondary-black 
+        border-4 border-secondary-white rounded-xl
       "
     >
-      <p>This project is unfinished. Currently on version {packageData.version}.</p>
+      <p>
+        This project is unfinished. Currently on version {packageData.version}. 
+        {
+          screenDebug && `Screen: ${window.screen.width}x${window.screen.height}, 
+          Window: ${window.innerWidth}x${window.innerHeight}, Root: ${width}x${height}.`
+        }
+      </p>
     </div>
   );
 }
