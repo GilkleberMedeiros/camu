@@ -83,6 +83,20 @@ export function Menu() {
 export function ShareMenu({ socialMediaShareLinks })
 {
   const floatMenuContentRef = React.useRef(null);
+  const rootRef = React.useRef(null);
+
+  document.addEventListener('mousedown', (e) => {
+    const menuRoot = rootRef.current;
+
+    if (!menuRoot) return; // If menuRoot not loaded yet
+    // Else, clicked in menuRoot or its children.
+    if (menuRoot.contains(e.target) || menuRoot.outerHTML === e.target.outerHTML) {
+      toggleMenuDisplay();
+      return;
+    }
+
+    floatMenuContentRef.current.style.display = "none";
+  });
 
   const toggleMenuDisplay = () => {
     if (floatMenuContentRef.current) {
@@ -99,6 +113,7 @@ export function ShareMenu({ socialMediaShareLinks })
       className="
         relative size-fit
       "
+      ref={rootRef}
     >
       <button
         className="m-0 b-0 p-[5px] border-[2px] border-main-black rounded-[10px]"
