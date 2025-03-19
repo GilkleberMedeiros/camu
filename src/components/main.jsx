@@ -14,7 +14,7 @@ import mailIcon from "/assets/icons/mail.svg";
 
 export function Header()
 {
-  let logoTitle = "Camu";
+  const logoTitle = "Camu";
 
   return (
     <header className="p-[1.125rem] flex justify-between 

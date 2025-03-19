@@ -109,7 +109,7 @@ export function ShareMenu({ socialMediaShareLinks })
         ref={floatMenuContentRef}
         className="
           absolute top-[110%] hidden space-y-[2px] w-[125px]
-          p-[4px] border-main-black border-1 bg-main-white 
+         border-main-black border-1 bg-main-white
         "
       >
         {socialMediaShareLinks.map(
@@ -118,11 +118,11 @@ export function ShareMenu({ socialMediaShareLinks })
               <button 
                 key={i} 
                 className="
-                 flex gap-[4px] justify-center items-center cursor-pointer hover:bg-gray-100
+                 w-full flex gap-[4px] p-[4px] justify-center items-center cursor-pointer hover:bg-gray-200
                 "
                 onClick={v.onClick}
               >
-                <span className="font-light text-[11px] ml-[4px]">Compartilhe no</span>
+                <span className="font-light text-[11px]">Compartilhe no</span>
                 <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px]"} />
               </button>
             );

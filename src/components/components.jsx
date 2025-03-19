@@ -1,7 +1,3 @@
-/* 
-Expose all components.
-*/
-
 import * as main from "./main.jsx";
 import * as menus from "./menus.jsx";
 import * as containers from "./containers.jsx";
