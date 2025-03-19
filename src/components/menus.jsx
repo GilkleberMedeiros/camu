@@ -87,7 +87,9 @@ export function ShareMenu({ socialMediaShareLinks })
   const toggleMenuDisplay = () => {
     if (floatMenuContentRef.current) {
       const currentDisplay = floatMenuContentRef.current.style.display;
-      floatMenuContentRef.current.style.display = currentDisplay === "none" ? "block" : "none";
+      const newDisplay = currentDisplay === "none" ? "block" : "none"
+      floatMenuContentRef.current.style.display = newDisplay;
+      
     }
   };
 
@@ -110,6 +112,7 @@ export function ShareMenu({ socialMediaShareLinks })
         className="
           absolute top-[110%] hidden space-y-[2px] w-[125px]
          border-main-black border-1 bg-main-white
+          c-s:right-auto c-s:left-0 right-0 
         "
       >
         {socialMediaShareLinks.map(
@@ -118,7 +121,7 @@ export function ShareMenu({ socialMediaShareLinks })
               <button 
                 key={i} 
                 className="
-                 w-full flex gap-[4px] p-[4px] justify-center items-center cursor-pointer hover:bg-gray-200
+                 w-full flex gap-[4px] p-[4px] justify-center items-center cursor-pointer hover:bg-gray-200 active:bg-gray-200
                 "
                 onClick={v.onClick}
               >
