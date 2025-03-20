@@ -1,9 +1,7 @@
 import React from "react";
 
-import { IconBtn } from "./icons.jsx"
+import { ChevronLeftIcon, ChevronRightIcon } from "./icons.jsx"
 
-import chevronRight from "/assets/icons/chevron-right.svg";
-import chevronLeft from "/assets/icons/chevron-left.svg";
 
 
 export function ImageTextCarousel()
@@ -127,15 +125,14 @@ export function ImageTextCarousel()
 
 
   return (
-    <div id="imageTextCarouselContainer" className="w-[90%] h-[350px] flex justify-center items-center gap-[2.5rem]">
-      <IconBtn 
-        id="carouselLeftArrow" 
-        iconSrc={chevronLeft}
-        iconAlt="Botão seta esquerda do slider (para à esquerda)" 
-        iconStyle="w-[1.5625rem] h-[1.5625rem]" 
-        btnStyle="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
+    <div id="imageTextCarouselContainer" className="w-[90%] h-[350px] flex justify-center items-center gap-[2rem]">
+      <button
+        id="carouselLeftArrow"
+        className="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
         onClick={carouselBtnsOnClick(1)}
-      />
+      >
+        <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
+      </button>
 
       <div 
         id="carouselContent" 
@@ -193,15 +190,14 @@ export function ImageTextCarousel()
           </div>
         </div>
       </div>
-
-      <IconBtn 
-        id="carouselRightArrow" 
-        iconSrc={chevronRight}
-        iconAlt="Botão seta direita do slider (para à direita)" 
-        iconStyle="w-[1.5625rem] h-[1.5625rem]" 
-        btnStyle="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
+        
+      <button
+        id="carouselRightArrow"
+        className="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
         onClick={carouselBtnsOnClick(-1)}
-      />
+      >
+        <ChevronRightIcon width="1.75rem" height="2rem" />
+      </button>
     </div>
   );
 }
