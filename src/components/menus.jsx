@@ -85,7 +85,7 @@ export function ShareMenu({ socialMediaShareLinks })
   const floatMenuContentRef = React.useRef(null);
   const rootRef = React.useRef(null);
 
-  document.addEventListener('mousedown', (e) => {
+  const onClickOutside = (e) => {
     const menuRoot = rootRef.current;
 
     if (!menuRoot) return; // If menuRoot not loaded yet
@@ -96,7 +96,10 @@ export function ShareMenu({ socialMediaShareLinks })
     }
 
     floatMenuContentRef.current.style.display = "none";
-  });
+  }
+
+  document.addEventListener('mousedown', onClickOutside);
+  document.addEventListener("touchstart", onClickOutside);
 
   const toggleMenuDisplay = () => {
     if (floatMenuContentRef.current) {
