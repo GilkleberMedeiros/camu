@@ -84,13 +84,37 @@ export function ShareMenu({ socialMediaShareLinks })
 {
   const floatMenuContentRef = React.useRef(null);
   const rootRef = React.useRef(null);
+  const touchStartRef = React.useRef(false);
+
+  React.useEffect(() => {
+    document.addEventListener("touchstart", onClickOutside);
+    document.addEventListener('mousedown', onClickOutside);
+
+    return () => {
+      document.removeEventListener("touchstart", onClickOutside);
+      document.removeEventListener('mousedown', onClickOutside);
+    }
+  }, []);
 
   const onClickOutside = (e) => {
-    const menuRoot = rootRef.current;
+    // Only raises touchstart on mobile devices that also raise mousedown.
+    if (e.type === "touchstart") {
+      touchStartRef.current = true;
+    } else if (e.type !== "touchstart" && touchStartRef.current) {
+      touchStartRef.current = false;
+      return;
+    }
 
-    if (!menuRoot) return; // If menuRoot not loaded yet
-    // Else, clicked in menuRoot or its children.
-    if (menuRoot.contains(e.target) || menuRoot.outerHTML === e.target.outerHTML) {
+    const menuRoot = rootRef.current;
+    const menuContent = floatMenuContentRef.current;
+
+    if (!menuRoot) return; // If menuRoot not loaded yet.
+    // if clicked on #floatMenuContent, do nothing
+    if (menuContent.outerHTML === e.target.outerHTML || 
+      menuContent.contains(e.target)) return;
+    // Else, clicked on menuRoot (#flaotMenu) or its children
+    if (menuRoot.contains(e.target) || menuRoot.outerHTML === e.target.outerHTML) 
+    {
       toggleMenuDisplay();
       return;
     }
@@ -98,8 +122,6 @@ export function ShareMenu({ socialMediaShareLinks })
     floatMenuContentRef.current.style.display = "none";
   }
 
-  document.addEventListener('mousedown', onClickOutside);
-  document.addEventListener("touchstart", onClickOutside);
 
   const toggleMenuDisplay = () => {
     if (floatMenuContentRef.current) {
@@ -120,7 +142,6 @@ export function ShareMenu({ socialMediaShareLinks })
     >
       <button
         className="m-0 b-0 p-[5px] border-[2px] border-main-black rounded-[10px]"
-        onClick={toggleMenuDisplay}
       >
         <IconShare3 />
       </button>
@@ -132,6 +153,7 @@ export function ShareMenu({ socialMediaShareLinks })
          border-main-black border-1 bg-main-white
           c-s:right-auto c-s:left-0 right-0 
         "
+        style={{display: "none"}}
       >
         {socialMediaShareLinks.map(
           (v, i) => {
