@@ -11,6 +11,40 @@ export function ImageTextCarousel()
   const carouselImgItemsContainerRef = React.useRef(null);
   const carouselTextItemsContainerRef = React.useRef(null);
 
+
+  React.useEffect(() => {
+    /*
+      Adding scale animation in images for mobile devices.
+    */
+    const onTouchStart = (e) => {
+      const image = e.target.parentElement;
+
+      image.style.scale = "105% 105% 105%";
+
+    };
+
+    const onTouchEnd = (e) => {
+      const image = e.target.parentElement;
+
+      image.style.scale = "100% 100% 100%";
+    };
+    const images = carouselImgItemsContainerRef.current
+      .querySelectorAll("[id^='carouselImgItem']");
+    
+    images.forEach((v) => {
+      v.addEventListener("touchstart", onTouchStart);
+      v.addEventListener("touchend", onTouchEnd);
+    });
+    
+    return () => {
+      images.forEach((v) => {
+        v.removeEventListener("touchstart", onTouchStart);
+        v.removeEventListener("touchend", onTouchEnd);
+      });
+    }
+    
+  }, []);
+
   const imageText = [
     {
       "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 1"}, 
@@ -153,8 +187,8 @@ export function ImageTextCarousel()
                 <div 
                   key={index} 
                   id={"carouselImgItem"+ (index + 1).toString()}
-                  className="h-[100%] transistion-[margin-left] duration-750 ease-in-out 
-                  hover:scale-105 " 
+                  className="h-[100%] duration-750 ease-in-out 
+                  hover:scale-105" 
                   style={{ width: carouselItemWidthClassStr, marginLeft: "0%" }}
                   ref={index === 0 ? firstCarouselImgItemRef : null}
                 >
