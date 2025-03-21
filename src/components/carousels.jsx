@@ -168,7 +168,10 @@ export function ImageTextCarousel()
     >
       <button
         id="carouselLeftArrow"
-        className="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
+        className="
+          w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
+        bg-secondary-white flex justify-center items-center
+        "
         onClick={carouselBtnsOnClick(1)}
       >
         <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
@@ -176,12 +179,24 @@ export function ImageTextCarousel()
 
       <div 
         id="carouselContent" 
-        className={"m-0 b-0 p-0 flex items-stretch max-sm:flex-col portrait:flex-col h-[100%]"} 
-        style={{ width: "80%", marginLeft: "0%" }}
+        className="
+          m-0 b-0 p-0 flex items-stretch max-sm:flex-col portrait:flex-col 
+          h-[100%] w-[80%] max-sm:w-[100%] portrait:w-[100%]
+        "
+        style={{ marginLeft: "0%" }}
       >
         <div 
-          className="overflow-hidden grow-3 shrink-1 basis-3 h-[100%]"
+          className="relative overflow-hidden grow-3 shrink-1 basis-3 h-[100%]"
         >
+          <button
+            className="
+              m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
+              absolute left-[1.125rem] top-[50%] z-10
+            "
+            onClick={carouselBtnsOnClick(1)}
+          >
+            <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
+          </button>
           <div 
             id="expandedCarouselItemImgContainer" 
             className={"flex flex-nowrap h-[100%]"} 
@@ -193,7 +208,7 @@ export function ImageTextCarousel()
                 <div 
                   key={index} 
                   id={"carouselImgItem"+ (index + 1).toString()}
-                  className="h-[100%] duration-750 ease-in-out 
+                  className="h-[100%] duration-750 ease-in-out
                   hover:scale-105" 
                   style={{ width: carouselItemWidthClassStr, marginLeft: "0%" }}
                   ref={index === 0 ? firstCarouselImgItemRef : null}
@@ -206,6 +221,15 @@ export function ImageTextCarousel()
               );
             })}
           </div>
+          <button
+            className="
+              m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
+              absolute right-[1.125rem] top-[50%] z-10
+            "
+            onClick={carouselBtnsOnClick(-1)}
+          >
+            <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
+          </button>
         </div>
 
         <div className="
@@ -241,7 +265,10 @@ export function ImageTextCarousel()
         
       <button
         id="carouselRightArrow"
-        className="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
+        className="
+          w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
+          bg-secondary-white flex justify-center items-center
+        "
         onClick={carouselBtnsOnClick(-1)}
       >
         <ChevronRightIcon width="1.75rem" height="2rem" />
