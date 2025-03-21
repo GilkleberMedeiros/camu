@@ -89,9 +89,9 @@ export function ImageTextCarousel()
   const textSolidOpacity = "1";
   const textOpaqueOpacity = "0.15";
 
-  const carouselBtnsOnClick = (() => {
+  const onCarouselBtnsClick = (() => {
     // Loading variables
-    let count = 1; // next to move ref
+    let count = 1; // current item ref
     let countMax = len;
     let countMin = 1;
     let move = carouselItemWidth;
@@ -172,7 +172,7 @@ export function ImageTextCarousel()
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
         bg-secondary-white flex justify-center items-center
         "
-        onClick={carouselBtnsOnClick(1)}
+        onClick={onCarouselBtnsClick(1)}
       >
         <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
       </button>
@@ -193,7 +193,7 @@ export function ImageTextCarousel()
               m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
               absolute left-[1.125rem] top-[50%] z-10
             "
-            onClick={carouselBtnsOnClick(1)}
+            onClick={onCarouselBtnsClick(1)}
           >
             <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
           </button>
@@ -226,7 +226,7 @@ export function ImageTextCarousel()
               m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
               absolute right-[1.125rem] top-[50%] z-10
             "
-            onClick={carouselBtnsOnClick(-1)}
+            onClick={onCarouselBtnsClick(-1)}
           >
             <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
           </button>
@@ -269,7 +269,7 @@ export function ImageTextCarousel()
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
           bg-secondary-white flex justify-center items-center
         "
-        onClick={carouselBtnsOnClick(-1)}
+        onClick={onCarouselBtnsClick(-1)}
       >
         <ChevronRightIcon width="1.75rem" height="2rem" />
       </button>
