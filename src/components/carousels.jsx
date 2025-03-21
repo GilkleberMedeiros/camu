@@ -159,7 +159,13 @@ export function ImageTextCarousel()
 
 
   return (
-    <div id="imageTextCarouselContainer" className="w-[90%] h-[350px] flex justify-center items-center gap-[2rem]">
+    <div 
+      id="imageTextCarouselContainer" 
+      className="
+        w-[90%] h-[350px] max-sm:h-[320px] 
+        max-c-s:h-[280px] min-xl:h-[23.75rem] flex justify-center items-center gap-[2rem]
+      "
+    >
       <button
         id="carouselLeftArrow"
         className="w-[3.125rem] h-[3.125rem] rounded-full bg-secondary-white flex justify-center items-center"
