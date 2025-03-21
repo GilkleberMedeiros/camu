@@ -154,10 +154,12 @@ export function ImageTextCarousel()
                   className="h-[350px] transistion-[margin-left] duration-750 ease-in-out 
                   hover:scale-105 " 
                   style={{ width: carouselItemWidthClassStr, marginLeft: "0%" }}
-                  ref={index === 0 ? firstCarouselImgItemRef : null}>
+                  ref={index === 0 ? firstCarouselImgItemRef : null}
+                >
                   <img src={item.image.imageUrl} alt={item.image.imageTitle} 
                     className="m-0 h-[350px] object-cover"
-                    style={{ width: "100%" }}/>
+                    style={{ width: "100%" }}
+                  />
                 </div>
               );
             })}
@@ -165,7 +167,7 @@ export function ImageTextCarousel()
         </div>
 
         <div className="overflow-hidden h-[350px] w-[25%] max-sm:w-[100%] max-sm:h-[25%]
-          z-10 border-main-black border-y-1 border-r-1 max-sm:border-x-1 max-sm:border-b-1">
+          z-10 border-main-black min-sm:border-y-1 min-sm:border-r-1 max-sm:border-x-1 max-sm:border-b-1">
           <div 
             id="expandedCarouselItemTextContainer" 
             className={"flex flex-nowrap"} 
@@ -180,8 +182,8 @@ export function ImageTextCarousel()
                 className="m-0 h-[350px] flex flex-col gap-[1rem] justify-start items-start 
                 p-[1.125rem] duration-1250 ease-in-out overflow-y-auto"
                 style={{ width: carouselItemWidthClassStr, marginLeft: "0%", opacity: index === 0 ? "1" : "0.15" }}
-                ref={index === 0 ? firstCarouselTextItemRef : null}>
-
+                ref={index === 0 ? firstCarouselTextItemRef : null}
+              >
                 <h3 className="text-[1.25rem] font-medium">{item.text.title}</h3>
                 <p className="text-[0.875rem] text-wrap">{item.text.content}</p>
               </div>
