@@ -181,13 +181,13 @@ export function ImageTextCarousel()
               <div 
                 key={index} 
                 id={"carouselTextItem"+ (index + 1).toString()}
-                className="m-0 h-[100%] flex flex-col gap-[1rem] justify-start items-start 
+                className="m-0 h-[100%] flex flex-col gap-[0.875rem] justify-start items-start 
                 p-[1.125rem] duration-1250 ease-in-out overflow-y-auto"
                 style={{ width: carouselItemWidthClassStr, marginLeft: "0%", opacity: index === 0 ? "1" : "0.15" }}
                 ref={index === 0 ? firstCarouselTextItemRef : null}
               >
-                <h3 className="text-[1.25rem] font-medium">{item.text.title}</h3>
-                <p className="text-[0.875rem] text-wrap">{item.text.content}</p>
+                <h3 className="text-[1.125rem] font-medium">{item.text.title}</h3>
+                <p className="text-[0.75rem] text-wrap">{item.text.content}</p>
               </div>
               );
             })}
