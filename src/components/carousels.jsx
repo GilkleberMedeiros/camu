@@ -136,7 +136,7 @@ export function ImageTextCarousel()
 
       <div 
         id="carouselContent" 
-        className={"m-0 b-0 p-0 flex items-stretch max-sm:flex-col h-[100%]"} 
+        className={"m-0 b-0 p-0 flex items-stretch max-sm:flex-col portrait:flex-col h-[100%]"} 
         style={{ width: "80%", marginLeft: "0%" }}
       >
         <div 
@@ -168,8 +168,12 @@ export function ImageTextCarousel()
           </div>
         </div>
 
-        <div className="overflow-hidden grow-1 shrink-3 basis-1 h-[100%] 
-          z-10 border-main-black min-sm:border-y-1 min-sm:border-r-1 max-sm:border-x-1 max-sm:border-b-1">
+        <div className="
+          overflow-hidden grow-1 shrink-3 basis-1 h-[100%] z-10 border-main-black 
+          min-sm:border-y-1 min-sm:border-r-1 max-sm:border-x-1 max-sm:border-b-1
+          portrait:border-x-1 portrait:border-b-1 portrait:border-t-0
+          "
+        >
           <div 
             id="expandedCarouselItemTextContainer" 
             className={"flex flex-nowrap h-[100%]"} 
