@@ -186,17 +186,31 @@ export function ImageTextCarousel()
         style={{ marginLeft: "0%" }}
       >
         <div 
-          className="relative overflow-hidden grow-3 shrink-1 basis-3 h-[100%]"
+          className="
+            relative overflow-hidden grow-3 shrink-1 basis-3 h-[100%]
+          "
         >
-          <button
+          <div
+            id="carouselLeftArrowShadow"
             className="
-              m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
-              absolute left-[1.125rem] top-[50%] z-10
-            "
-            onClick={onCarouselBtnsClick(1)}
+              absolute left-0 top-0 h-[100%] w-[6rem]
+              shadow-main-black/35 
+              max-sm:shadow-[inset_5.5rem_0_2.2rem_-2.2rem]
+              portrait:shadow-[inset_5.5rem_0_2.2rem_-2.2rem] 
+              z-10 flex flex-col items-center justify-center
+            " 
           >
-            <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
-          </button>
+            <button
+              id="carouselCompactLeftArrow"
+              className="
+                m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
+                z-10
+              "
+              onClick={onCarouselBtnsClick(1)}
+            >
+              <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
+            </button>
+          </div>
           <div 
             id="expandedCarouselItemImgContainer" 
             className={"flex flex-nowrap h-[100%]"} 
@@ -221,15 +235,27 @@ export function ImageTextCarousel()
               );
             })}
           </div>
-          <button
+          <div
+            id="carouselRightArrowShadow"
             className="
-              m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
-              absolute right-[1.125rem] top-[50%] z-10
-            "
-            onClick={onCarouselBtnsClick(-1)}
+              absolute right-0 top-0 h-[100%] w-[6rem]
+              shadow-main-black/35 
+              max-sm:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem]
+              portrait:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem] z-10 
+              flex flex-col items-center justify-center
+            " 
           >
-            <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
-          </button>
+            <button
+              id="carouselCompactRightArrow"
+              className="
+                m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
+                z-10
+              "
+              onClick={onCarouselBtnsClick(-1)}
+            >
+              <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
+            </button>
+          </div>
         </div>
 
         <div className="
