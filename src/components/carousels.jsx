@@ -107,7 +107,7 @@ export function ImageTextCarousel()
 
   }, []);
 
-
+  // handle image scale animation
   React.useEffect(() => {
     /*
       Adding scale animation in images for mobile devices.
@@ -198,7 +198,7 @@ export function ImageTextCarousel()
         id="carouselLeftArrow"
         className="
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
-        bg-secondary-white flex justify-center items-center
+        bg-secondary-white flex justify-center items-center cursor-pointer
 
           carousel-button-left
         "
@@ -222,18 +222,25 @@ export function ImageTextCarousel()
           <div
             id="carouselLeftArrowShadow"
             className="
-              absolute left-0 top-0 h-[100%] w-[6rem]
-              shadow-main-black/35 
-              max-sm:shadow-[inset_5.5rem_0_2.2rem_-2.2rem]
-              portrait:shadow-[inset_5.5rem_0_2.2rem_-2.2rem] 
+              absolute left-0 top-0 h-[100%] w-[6.5rem]
               z-10 flex flex-col items-center justify-center
-            " 
+              transition-shadow duration-150 ease-in-out
+              shadow-main-black/35
+              portrait:shadow-[inset_5.5rem_0_2.2rem_-2.2rem]
+              max-sm:shadow-[inset_5.5rem_0_2.2rem_-2.2rem]
+              hover:shadow-main-black/38
+              hover:portrait:shadow-[inset_6.2rem_0_2.2rem_-2.2rem]
+              hover:max-sm:shadow-[inset_6.2rem_0_2.2rem_-2.2rem]
+              active:shadow-main-black/38
+              active:portrait:shadow-[inset_6.2rem_0_2.2rem_-2.2rem]
+              active:max-sm:shadow-[inset_6.2rem_0_2.2rem_-2.2rem]
+            "
           >
             <button
               id="carouselCompactLeftArrow"
               className="
                 m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
-                z-10
+                z-10 cursor-pointer
 
                 carousel-button-left
               "
@@ -268,18 +275,25 @@ export function ImageTextCarousel()
           <div
             id="carouselRightArrowShadow"
             className="
-              absolute right-0 top-0 h-[100%] w-[6rem]
-              shadow-main-black/35 
-              max-sm:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem]
-              portrait:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem] z-10 
+              absolute right-0 top-0 h-[100%] w-[6.5rem] z-10
               flex flex-col items-center justify-center
-            " 
+              transition-shadow duration-150 ease-in-out
+              shadow-main-black/35
+              portrait:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem]
+              max-sm:shadow-[inset_-5.5rem_0_2.2rem_-2.2rem]
+              hover:shadow-main-black/38
+              hover:portrait:shadow-[inset_-6.2rem_0_2.2rem_-2.2rem]
+              hover:max-sm:shadow-[inset_-6.2rem_0_2.2rem_-2.2rem]
+              active:shadow-main-black/38
+              active:portrait:shadow-[inset_-6.2rem_0_2.2rem_-2.2rem]
+              active:max-sm:shadow-[inset_-6.2rem_0_2.2rem_-2.2rem]
+            "
           >
             <button
               id="carouselCompactRightArrow"
               className="
                 m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
-                z-10
+                z-10 cursor-pointer
 
                 carousel-button-right
               "
@@ -324,7 +338,7 @@ export function ImageTextCarousel()
         id="carouselRightArrow"
         className="
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
-          bg-secondary-white flex justify-center items-center
+          bg-secondary-white flex justify-center items-center cursor-pointer
 
           carousel-button-right
         "
