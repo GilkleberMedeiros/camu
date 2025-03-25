@@ -12,6 +12,102 @@ export function ImageTextCarousel()
   const carouselTextItemsContainerRef = React.useRef(null);
 
 
+  // hook to handle function to move and animate carousel items
+  React.useEffect(() => {
+    const moveAnimateCarouselItems = (() => {
+      // Loading variables
+      let count = 1; // current item ref
+      let countMax = len;
+      let countMin = 1;
+      let move = carouselItemWidth;
+  
+      return function (directionFactor) {
+        // Se directionFactor >= 1, move o carousel para a esquerda
+        // Se directionFactor <= 0, move o carousel para a direita
+  
+        return function (e) {
+          // Avisa se as referências usadas não forem encontradas
+          !carouselTextItemsContainerRef.current ? 
+            console.warn("Referência para o container de textos do carousel não encontrada.") : null
+  
+          !firstCarouselImgItemRef.current ? 
+            console.warn("Referência para o primeiro item do carousel não encontrada.") : null
+    
+          directionFactor = directionFactor > 0 ? 1 : -1;
+          let previuousTextItem = carouselTextItemsContainerRef.current.children[count - 1];
+  
+          let lastTextItem = carouselTextItemsContainerRef.current.children[countMax - 1];
+  
+          // Incrementando ou decrementando a ref do item atual (count)
+          directionFactor > 0 ? count-- : count++;
+  
+          let currentTextItem = carouselTextItemsContainerRef.current.children[count - 1];
+    
+          // Se count excedeu o limite maximo
+          if (count > countMax) {
+            count = 1;
+  
+            // slide to first carousel item
+            firstCarouselImgItemRef.current.style.marginLeft = "0%";
+            firstCarouselTextItemRef.current.style.marginLeft = "0%";
+  
+            // Animate text items opacity
+            firstCarouselTextItemRef.current.style.opacity = textSolidOpacity;
+            previuousTextItem.style.opacity = textOpaqueOpacity;
+          } // Se count excedeu o limite mínimo
+          else if (countMin > count) {
+            count = countMax;
+  
+            // slide to last carousel item
+            firstCarouselImgItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
+            firstCarouselTextItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
+  
+            // Animate text items opacity
+            lastTextItem.style.opacity = textSolidOpacity;
+            previuousTextItem.style.opacity = textOpaqueOpacity;
+          }// Senão, mova para o próximo item
+          else {
+            // Pega o marginLeft atual e adiciona com valor do movimento
+            let currentMarginLeft = parseInt(firstCarouselImgItemRef.current.style.marginLeft);
+            let newMarginLeft = currentMarginLeft + (move * directionFactor);
+  
+            // Slide carousel items
+            firstCarouselImgItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
+            firstCarouselTextItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
+  
+            // Animate text items opacity
+            currentTextItem.style.opacity = textSolidOpacity;
+            previuousTextItem.style.opacity = textOpaqueOpacity;
+          }
+    
+        }
+      }
+    })();
+
+    const rightCarouselBtns = new Array(...document.getElementsByClassName("carousel-button-right"));
+    const leftCarouselBtns = new Array(...document.getElementsByClassName("carousel-button-left"));
+    const rFunc = moveAnimateCarouselItems(-1);
+    const lFunc = moveAnimateCarouselItems(1);
+
+    rightCarouselBtns.map((v) => {
+      v.addEventListener("click", rFunc);
+    });
+    leftCarouselBtns.map((v) => {
+      v.addEventListener("click", lFunc);
+    });
+
+    return () => {
+      rightCarouselBtns.map((v) => {
+        v.removeEventListener("click", rFunc);
+      });
+      leftCarouselBtns.map((v) => {
+        v.removeEventListener("click", lFunc);
+      });
+    }
+
+  }, []);
+
+
   React.useEffect(() => {
     /*
       Adding scale animation in images for mobile devices.
@@ -89,74 +185,6 @@ export function ImageTextCarousel()
   const textSolidOpacity = "1";
   const textOpaqueOpacity = "0.15";
 
-  const onCarouselBtnsClick = (() => {
-    // Loading variables
-    let count = 1; // current item ref
-    let countMax = len;
-    let countMin = 1;
-    let move = carouselItemWidth;
-
-    return function (directionFactor) {
-
-      return function (e) {
-        // Avisa se as referências usadas não forem encontradas
-        !carouselTextItemsContainerRef.current ? 
-          console.warn("Referência para o container de textos do carousel não encontrada.") : null
-
-        !firstCarouselImgItemRef.current ? 
-          console.warn("Referência para o primeiro item do carousel não encontrada.") : null
-  
-        directionFactor = directionFactor > 0 ? 1 : -1;
-        let previuousTextItem = carouselTextItemsContainerRef.current.children[count - 1];
-
-        let lastTextItem = carouselTextItemsContainerRef.current.children[countMax - 1];
-
-        // Incrementando ou decrementando a ref do item atual (count)
-        directionFactor > 0 ? count-- : count++;
-
-        let currentTextItem = carouselTextItemsContainerRef.current.children[count - 1];
-  
-        // Se count excedeu o limite maximo
-        if (count > countMax) {
-          count = 1;
-
-          // slide to first carousel item
-          firstCarouselImgItemRef.current.style.marginLeft = "0%";
-          firstCarouselTextItemRef.current.style.marginLeft = "0%";
-
-          // Animate text items opacity
-          firstCarouselTextItemRef.current.style.opacity = textSolidOpacity;
-          previuousTextItem.style.opacity = textOpaqueOpacity;
-        } // Se count excedeu o limite mínimo
-        else if (countMin > count) {
-          count = countMax;
-
-          // slide to last carousel item
-          firstCarouselImgItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
-          firstCarouselTextItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
-
-          // Animate text items opacity
-          lastTextItem.style.opacity = textSolidOpacity;
-          previuousTextItem.style.opacity = textOpaqueOpacity;
-        }// Senão, mova para o próximo item
-        else {
-          // Pega o marginLeft atual e adiciona com valor do movimento
-          let currentMarginLeft = parseInt(firstCarouselImgItemRef.current.style.marginLeft);
-          let newMarginLeft = currentMarginLeft + (move * directionFactor);
-
-          // Slide carousel items
-          firstCarouselImgItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
-          firstCarouselTextItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
-
-          // Animate text items opacity
-          currentTextItem.style.opacity = textSolidOpacity;
-          previuousTextItem.style.opacity = textOpaqueOpacity;
-        }
-  
-      }
-    }
-  })();
-
 
   return (
     <div 
@@ -171,8 +199,9 @@ export function ImageTextCarousel()
         className="
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
         bg-secondary-white flex justify-center items-center
+
+          carousel-button-left
         "
-        onClick={onCarouselBtnsClick(1)}
       >
         <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
       </button>
@@ -205,8 +234,9 @@ export function ImageTextCarousel()
               className="
                 m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
                 z-10
+
+                carousel-button-left
               "
-              onClick={onCarouselBtnsClick(1)}
             >
               <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
             </button>
@@ -250,8 +280,9 @@ export function ImageTextCarousel()
               className="
                 m-0 border-0 p-0 size-fit min-sm:not-portrait:hidden
                 z-10
+
+                carousel-button-right
               "
-              onClick={onCarouselBtnsClick(-1)}
             >
               <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
             </button>
@@ -294,8 +325,9 @@ export function ImageTextCarousel()
         className="
           w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
           bg-secondary-white flex justify-center items-center
+
+          carousel-button-right
         "
-        onClick={onCarouselBtnsClick(-1)}
       >
         <ChevronRightIcon width="1.75rem" height="2rem" />
       </button>
