@@ -17,8 +17,13 @@ export function Header()
   const logoTitle = "Camu";
 
   return (
-    <header className="p-[1.125rem] flex justify-between 
-      content-center border-b-2 border-b-main-black shadow-main-black/25 shadow-[0_4px_2px_0]">
+    <header 
+      className="
+        p-[1.125rem] flex justify-between content-center border-b-2 
+        border-b-main-black shadow-main-black/25 shadow-[0_4px_2px_0] 
+        min-xl:border-b-[0.125rem] min-xl:shadow-[0_0.25rem_0.125rem_0]
+      "
+    >
       <logo.Container>
         <logo.Icon src={logoIcon} />
         <logo.Title title={logoTitle} />

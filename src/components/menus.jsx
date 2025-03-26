@@ -42,8 +42,9 @@ export function Menu() {
 
       {/* Desktop Menu */}
       <nav className="
-        max-sm:hidden flex flex-wrap content-center px-[20px] py-[12px] gap-[16px] font-medium
-        "
+        max-sm:hidden flex flex-wrap content-center px-[20px] min-xl:px-[1.25rem] 
+        py-[12px] min-xl:py-[0.75rem] gap-[16px] min-xl:gap-[1rem] font-medium
+      "
       >
         <MenuLink href="#sectionSobre" style="text-[0.75rem]">Sobre</MenuLink>
         <MenuLink href="#sectionLocalização" style="text-[0.75rem]">Localização</MenuLink>
@@ -141,17 +142,20 @@ export function ShareMenu({ socialMediaShareLinks })
       ref={rootRef}
     >
       <button
-        className="m-0 b-0 p-[5px] border-[2px] border-main-black rounded-[10px]"
+        className="
+          m-0 b-0 p-[5px] min-xl:p-[0.3125rem] border-[2px] min-xl:border-[0.125rem] 
+          border-main-black rounded-[10px] min-xl:rounded-[0.625rem]
+        "
       >
-        <IconShare3 />
+        <IconShare3 className="min-xl:size-[1.5rem]" />
       </button>
       <div 
         id="floatMenuContent"
         ref={floatMenuContentRef}
         className="
-          absolute top-[110%] hidden space-y-[2px] w-[125px]
+          absolute top-[110%] hidden space-y-[2px] w-[125px] min-xl:w-[7.8125rem]
          border-main-black border-1 bg-main-white
-          c-s:right-auto c-s:left-0 right-0 
+          c-s:right-auto c-s:left-0 right-0
         "
         style={{display: "none"}}
       >
@@ -161,12 +165,13 @@ export function ShareMenu({ socialMediaShareLinks })
               <button 
                 key={i} 
                 className="
-                 w-full flex gap-[4px] p-[4px] justify-center items-center cursor-pointer hover:bg-gray-200 active:bg-gray-200
+                 w-full flex gap-[4px] min-xl:gap-[0.25rem] p-[4px] min-xl:p-[0.25rem] 
+                 justify-center items-center cursor-pointer hover:bg-gray-200 active:bg-gray-200
                 "
                 onClick={v.onClick}
               >
-                <span className="font-light text-[11px]">Compartilhe no</span>
-                <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px]"} />
+                <span className="font-light text-[11px] min-xl:text-[0.6875rem]">Compartilhe no</span>
+                <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px] min-xl:size-[1.5rem]"} />
               </button>
             );
           }
