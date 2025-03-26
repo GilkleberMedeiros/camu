@@ -154,8 +154,8 @@ export function ShareMenu({ socialMediaShareLinks })
         ref={floatMenuContentRef}
         className="
           absolute top-[110%] hidden space-y-[2px] w-[125px] min-xl:w-[7.8125rem]
-         border-main-black border-1 bg-main-white
-          c-s:right-auto c-s:left-0 right-0
+         border-main-black border-1 min-xl:border-[0.0625rem] bg-main-white
+          c-s:right-auto c-s:left-0 right-0 z-100
         "
         style={{display: "none"}}
       >
