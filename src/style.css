@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 
+/* scale font-size (rem) automatically after width >= x */
+@media screen and (width >= 1280px) {
+  :root {
+    font-size: clamp(10px, 0.5rem + 1vw, 1000px);
+  }
+}
 
 @media screen and (width < 1024px) and (width >= 768px) {
   :root {
