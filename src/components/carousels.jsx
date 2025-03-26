@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons.jsx"
+import { Modal } from "./containers.jsx";
 
 
 
@@ -11,6 +12,58 @@ export function ImageTextCarousel()
   const carouselImgItemsContainerRef = React.useRef(null);
   const carouselTextItemsContainerRef = React.useRef(null);
 
+  const touchStartRef = React.useRef(false);
+
+  // Handle image modal
+  React.useEffect(() => {
+    const images = Array.from(document.getElementsByClassName("carousel-img"));
+    const modal = document.getElementById("carouselImgModal");
+    const modalContent = document.getElementById("modalContent");
+
+    const onImageClick = function (e) {
+      modalContent.innerHTML = e.currentTarget.cloneNode().outerHTML;
+      modal.style.display = "flex";
+      modal.showModal();
+    };
+    const onModalClose = function (e) {
+      modalContent.innerHTML = "";
+      modal.style.display = "none";
+      modal.close();
+    };
+    const onClickOutside = function (e) {
+      // Only raises touchstart on mobile devices that also raise mousedown.
+      if (e.type === "touchstart") {
+        touchStartRef.current = true;
+      } else if (e.type !== "touchstart" && touchStartRef.current) {
+        touchStartRef.current = false;
+        return;
+      }
+
+      // Do nothing if clicked on modalContent or its children
+      if (modalContent.contains(e.target) || 
+        modalContent.outerHTML === e.target.outerHTML) return;
+
+      onModalClose(e);
+
+      return;
+    };
+
+    images.map((v) => {
+      v.addEventListener("click", onImageClick);
+    });
+    modal.addEventListener("close", onModalClose);
+    document.addEventListener("touchstart", onClickOutside);
+    document.addEventListener("mousedown", onClickOutside);
+
+    return () => {
+      images.map((v) => {
+        v.removeEventListener("click", onImageClick);
+      });
+      modal.removeEventListener("close", onModalClose);
+      document.removeEventListener("touchstart", onClickOutside);
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, []);
 
   // hook to handle function to move and animate carousel items
   React.useEffect(() => {
@@ -219,6 +272,24 @@ export function ImageTextCarousel()
             relative overflow-hidden grow-3 shrink-1 basis-3 h-[100%]
           "
         >
+          {/* carousel img modal */}
+          <Modal
+            id="carouselImgModal"
+            style="
+              m-0 border-0 p-0 outline-0 min-w-[100%] min-h-[100%]
+              flex justify-center items-center 
+              bg-main-black/25 backdrop:bg-main-black/25
+              z-[-50]
+            "
+          >
+            <div
+              id="modalContent"
+              className="
+                m-0 border-0 p-0 w-[85%] h-[70vh] max-w-[85%] max-h-[70vh] 
+              "
+            >
+            </div>
+          </Modal>
           <div
             id="carouselLeftArrowShadow"
             className="
@@ -264,8 +335,14 @@ export function ImageTextCarousel()
                   style={{ width: carouselItemWidthClassStr, marginLeft: "0%" }}
                   ref={index === 0 ? firstCarouselImgItemRef : null}
                 >
-                  <img src={item.image.imageUrl} alt={item.image.imageTitle} 
-                    className="m-0 h-[100%] object-cover"
+                  <img 
+                    src={item.image.imageUrl} 
+                    alt={item.image.imageTitle} 
+                    className="
+                      carousel-img 
+                      
+                      m-0 h-[100%] object-cover
+                    "
                     style={{ width: "100%" }}
                   />
                 </div>
