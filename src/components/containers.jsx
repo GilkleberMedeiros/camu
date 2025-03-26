@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 import { SectionTitle  } from "./titles.jsx";
 import { normalizeStrToId } from "../scripts/utils.js";
 
@@ -105,5 +107,17 @@ export function ContactTextBox({ style="", children })
       "w-[21.5rem] flex flex-col justify-center items-center gap-[2.875rem] px-[0.6875rem] py-[1.375rem] "}>
       {children}
     </div>
+  );
+}
+
+export function Modal({ style="", children, ...rest })
+{
+  return (
+    <dialog
+      className={twMerge("", style)}
+      {...rest}
+    >
+      {children}
+    </dialog>
   );
 }
