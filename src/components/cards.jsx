@@ -1,6 +1,22 @@
+import { twMerge } from "tailwind-merge";
+
 import { Link } from "./links.jsx";
 import packageData from "../../package.json"
 
+
+export function Card({ style="", children, ...rest })
+{
+  return (
+    <div 
+      className={twMerge(`
+        w-[18.75rem] min-w-auto bg-main-white border-main-black border-[1px] min-xl:border-[0.0625rem]
+      `, style)}
+      {...rest}
+    >
+      {children}
+    </div>
+  );
+}
 
 export function CardsList({ id="", containerStyles, children })
 {
@@ -14,8 +30,7 @@ export function CardsList({ id="", containerStyles, children })
 export function PhysicalAdressCard({ adressInfo })
 {
   return (
-    <div className="w-[18.75rem] min-w-auto flex flex-col px-[1.25rem] py-[0.875rem] gap-[0.875rem] 
-      border-main-black border-[1px]">
+    <Card style="flex flex-col px-[1.25rem] py-[0.875rem] gap-[0.875rem]">
       <h4 className="font-semibold text-[1rem]">
         {adressInfo.name}
       </h4>
@@ -40,7 +55,7 @@ export function PhysicalAdressCard({ adressInfo })
       >
         Ver no google maps
       </Link>
-    </div>
+    </Card>
   );
 }
 
