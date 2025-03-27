@@ -2,7 +2,7 @@ import { IconBtn } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
-import { CardsList, PhysicalAdressCard } from "./cards";
+import { CardsList, PhysicalAdressCard, SeeMoreCard } from "./cards";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
 
@@ -35,16 +35,38 @@ export function Header()
 
 export function Main()
 {
-  const physicalAdress = {
-    "name": "Camu", 
-    "state": "SP", 
-    "city": "Bauru", 
-    "bairro": "b428d40", 
-    "street": "Rua almeida dos santos",
-    "number": "442",
-    "cep": "22440-055",
-    "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
-  };
+  const physicalAdresses = [
+    {
+      "name": "Camu", 
+      "state": "SP", 
+      "city": "Bauru", 
+      "bairro": "b428d40", 
+      "street": "Rua almeida dos santos",
+      "number": "442",
+      "cep": "22440-055",
+      "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
+    },
+    {
+      "name": "Camu", 
+      "state": "RJ", 
+      "city": "Jacarézinho", 
+      "bairro": "bairro", 
+      "street": "Rua Vinícius da Silva",
+      "number": "157",
+      "cep": "44228-777",
+      "viewOnMapsUrl": "https://www.google.com/maps?q=-22.541419434132827,-45.62919203153549"
+    },
+    {
+      "name": "Camu", 
+      "state": "SP", 
+      "city": "Mauá", 
+      "bairro": "Distrito", 
+      "street": "Rua vanessa lopes",
+      "number": "2222",
+      "cep": "0000-000",
+      "viewOnMapsUrl": "https://www.google.com/maps?q=-20.541419434132827,-40.62919203153549"
+    },
+  ];
 
   const openingHoursInfo = {
     "monday": "07:00 - 12:00, 13:00 - 17:00",
@@ -87,8 +109,14 @@ export function Main()
       <Section title="Sobre" children={<ImageTextCarousel />}/>
       <Section title="Localização">
         <CardsList>
-          <PhysicalAdressCard adressInfo={physicalAdress}>
-          </PhysicalAdressCard>
+          {
+            physicalAdresses.map((v, i) => {
+              return (
+                <PhysicalAdressCard key={i} adressInfo={v}>
+                </PhysicalAdressCard>
+              );
+            })
+          }
         </CardsList>
       </Section>
       <Section title="Horário de funcionamento">

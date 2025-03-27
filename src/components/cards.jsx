@@ -9,7 +9,8 @@ export function Card({ style="", children, ...rest })
   return (
     <div 
       className={twMerge(`
-        w-[18.75rem] min-w-auto bg-main-white border-main-black border-[1px] min-xl:border-[0.0625rem]
+        max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] bg-main-white border-main-black 
+        border-[1px] min-xl:border-[0.0625rem] shrink-0
       `, style)}
       {...rest}
     >
@@ -23,7 +24,12 @@ export function CardsList({ id="", style, children })
   const childs = Array.from(children);
 
   return (
-    <div id={id} className={twMerge("flex w-[85%] p-[1.25rem] gap-[1rem] overflow-scroll", style)}>
+    <div 
+      id={id} 
+      className={twMerge(`
+        flex flex-nowrap w-[85%] p-[1.25rem] gap-[1rem] overflow-x-auto overflow-y-hidden
+      `, style)}
+    >
       {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
       {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
     </div>
@@ -67,7 +73,7 @@ export function SeeMoreCard({ href, target="_blank", rel="", ...rest })
   return (
     <Link 
       style="
-        w-[18.75rem] min-w-auto bg-main-white border-main-black 
+        max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] bg-main-white border-main-black shrink-0
         border-[1px] min-xl:border-[0.0625rem] hover:border-secondary-white active:border-secondary-white
         flex items-center justify-center duration-250 ease-in-out cursor-pointer
       "
