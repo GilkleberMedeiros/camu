@@ -20,9 +20,12 @@ export function Card({ style="", children, ...rest })
 
 export function CardsList({ id="", style, children })
 {
+  const childs = Array.from(children);
+
   return (
-    <div id={id} className={twMerge("flex w-[85%] p-[1.25rem] gap-[1rem]", style)}>
-      {children}
+    <div id={id} className={twMerge("flex w-[85%] p-[1.25rem] gap-[1rem] overflow-scroll", style)}>
+      {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
+      {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
     </div>
   );
 }
