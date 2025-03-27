@@ -59,6 +59,24 @@ export function PhysicalAdressCard({ adressInfo })
   );
 }
 
+export function SeeMoreCard({ href, target="_blank", rel="", ...rest })
+{
+  return (
+    <Link 
+      style="
+        w-[18.75rem] min-w-auto bg-main-white border-main-black 
+        border-[1px] min-xl:border-[0.0625rem] hover:border-secondary-white active:border-secondary-white
+        flex items-center justify-center duration-250 ease-in-out cursor-pointer
+      "
+      target={target}
+      rel={rel}
+      {...rest}
+    >
+      Ver mais...
+    </Link>
+  );
+}
+
 export function AdviceUnfinishedAppCard()
 {
   const screenDebug = false;
