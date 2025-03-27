@@ -10,7 +10,8 @@ export function Card({ style="", children, ...rest })
     <div 
       className={twMerge(`
         max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] bg-main-white border-main-black 
-        border-[1px] min-xl:border-[0.0625rem] shrink-0
+        border-[1px] min-xl:border-[0.0625rem] shrink-0 not-portrait:min-w-[12.5rem] 
+        not-portrait:shrink-1
       `, style)}
       {...rest}
     >
@@ -73,7 +74,8 @@ export function SeeMoreCard({ href, target="_blank", rel="", ...rest })
   return (
     <Link 
       style="
-        max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] bg-main-white border-main-black shrink-0
+        max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] not-portrait:min-w-[12.5rem] 
+        not-portrait:shrink-1 bg-main-white border-main-black shrink-0
         border-[1px] min-xl:border-[0.0625rem] hover:border-secondary-white active:border-secondary-white
         flex items-center justify-center duration-250 ease-in-out cursor-pointer
       "
