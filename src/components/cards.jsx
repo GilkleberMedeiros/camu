@@ -18,10 +18,10 @@ export function Card({ style="", children, ...rest })
   );
 }
 
-export function CardsList({ id="", containerStyles, children })
+export function CardsList({ id="", style, children })
 {
   return (
-    <div id={id} className={containerStyles || "flex w-[85%] p-[1.25rem] gap-[1rem]"}>
+    <div id={id} className={twMerge("flex w-[85%] p-[1.25rem] gap-[1rem]", style)}>
       {children}
     </div>
   );
