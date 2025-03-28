@@ -47,7 +47,7 @@ export function Menu() {
       "
       >
         <MenuLink href="#sectionSobre" style="text-[0.75rem]">Sobre</MenuLink>
-        <MenuLink href="#sectionLocalização" style="text-[0.75rem]">Localização</MenuLink>
+        <MenuLink href="#sectionLocalizacao" style="text-[0.75rem]">Localização</MenuLink>
         <MenuLink href="#sectionHorarioDeFuncionamento" style="text-[0.75rem]">Horário de funcionamento</MenuLink>
         <MenuLink href="#sectionEntreEmContato" style="text-[0.75rem]">Entre em contato</MenuLink>
       </nav>
@@ -64,7 +64,7 @@ export function Menu() {
       `}>
           <div className="w-full h-full flex flex-col justify-start items-center gap-[15px] mt-[26%]">
             <MenuLink href="#sectionSobre" style="text-center text-[12px]">Sobre</MenuLink>
-            <MenuLink href="#sectionLocalização" style="text-center text-[12px]">Localização</MenuLink>
+            <MenuLink href="#sectionLocalizacao" style="text-center text-[12px]">Localização</MenuLink>
             <MenuLink href="#sectionHorarioDeFuncionamento" style="text-center text-[12px]">Horário de funcionamento</MenuLink>
             <MenuLink href="#sectionEntreEmContato" style="text-center text-[12px]">Entre em contato</MenuLink>
           </div>
