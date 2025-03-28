@@ -4,13 +4,13 @@ import { SectionTitle  } from "./titles.jsx";
 import { normalizeStrToId } from "../scripts/utils.js";
 
 
-export function Section({ title, children })
+export function Section({ title, style="", children })
 {
   const normalizedTitle = normalizeStrToId(title);
 
   return (
     <div id={`section${normalizedTitle}`} 
-      className="flex flex-col gap-[2.5rem] items-center p-[1.25rem]">
+      className={twMerge("flex flex-col gap-[2.5rem] items-center p-[1.25rem]", style)}>
       <SectionTitle title={title} />
       {children}
     </div>
