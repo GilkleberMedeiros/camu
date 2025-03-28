@@ -36,7 +36,7 @@ export function SectionTitle({ title })
       <hr id={`sectionTitle${normalizedTitle}Line`} 
         ref={hrRef} 
         style={{width: (hrWidth).toString() + "rem"}}
-        className="border-main-black border-t-2"
+        className="border-main-black border-t-2 min-xl:border-t-[0.125rem]"
       />
     </div>
   );
