@@ -20,7 +20,7 @@ export function Card({ style="", children, ...rest })
   );
 }
 
-export function CardsList({ id="", style, children })
+export function CardsList({ id="", style, children, ...rest })
 {
   const childs = Array.from(children);
 
@@ -30,12 +30,34 @@ export function CardsList({ id="", style, children })
       className={twMerge(`
         flex flex-nowrap w-[85%] p-[1.25rem] gap-[1rem] overflow-x-auto overflow-y-hidden
       `, style)}
+      {...rest}
     >
       {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
       {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
     </div>
   );
 }
+
+export function InfinityCardsList({ style="", children, ...rest }) 
+{
+  /* Same as CardsList component, but the content inside this go until the limit of the screen. */
+  const childs = Array.from(children);
+
+  return (
+    <CardsList 
+      style={"block self-end w-[100%] pr-0"}
+    >
+      <div
+        className={twMerge("flex flex-nowrap gap-[1rem] overflow-x-auto overflow-y-hidden pr-[1.25rem]", style)}
+        {...rest}
+      >
+        {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
+        {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
+      </div>
+    </CardsList>
+  );
+}
+
 
 export function PhysicalAdressCard({ adressInfo })
 {
