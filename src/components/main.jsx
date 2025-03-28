@@ -2,7 +2,7 @@ import { IconBtn } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
-import { CardsList, PhysicalAdressCard, SeeMoreCard } from "./cards";
+import { PhysicalAdressCard, InfinityCardsList } from "./cards";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
 
@@ -107,8 +107,8 @@ export function Main()
       </FloatingBtnsContainer>
 
       <Section title="Sobre" children={<ImageTextCarousel />}/>
-      <Section title="Localização">
-        <CardsList>
+      <Section title="Localização" style="pr-0">
+        <InfinityCardsList>
           {
             physicalAdresses.map((v, i) => {
               return (
@@ -117,7 +117,7 @@ export function Main()
               );
             })
           }
-        </CardsList>
+        </InfinityCardsList>
       </Section>
       <Section title="Horário de funcionamento">
         <ZebraOpeningHoursTable openingHoursInfo={openingHoursInfo}/>
