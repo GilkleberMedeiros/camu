@@ -24,7 +24,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
       <tbody>
         <tr 
           id="tableRowSegunda" 
-          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]">Segunda-feira</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -33,7 +35,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowTerca" 
-          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Terça-feira</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -42,7 +46,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowQuarta" 
-          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Quarta-feira</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -51,7 +57,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowQuinta" 
-          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Quinta-feira</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -60,7 +68,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowSexta" 
-          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Sexta-feira</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -69,7 +79,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowSabado" 
-          className="flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-white text-black p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Sabádo</td>
           <td className="inline-flex justify-center w-[50%]" >
@@ -78,7 +90,9 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
         </tr>
         <tr 
           id="tableRowDomingo" 
-          className="flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] max-c-s:p-[6px]"
+          className="
+            flex text-[0.75rem] font-medium bg-secondary-black text-white p-[7px] min-xl:p-[0.5rem] max-c-s:p-[6px]
+          "
         >
           <td className="inline-flex justify-center w-[50%]" >Domingo</td>
           <td className="inline-flex justify-center w-[50%]" >
