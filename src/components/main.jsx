@@ -1,4 +1,4 @@
-import { IconBtn } from "./icons.jsx";
+import { IconBtn, ImageIcon } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
@@ -81,30 +81,48 @@ export function Main()
   const phoneNumber = "5511000000000";
   const email = "example@gmail.com";
 
+  const useFloatingButtons = true;
+
   return (
     <div className="m-0 b-0 p-0">
-      <FloatingBtnsContainer>
-        <IconBtn
-          id="floatingWhats"
-          iconSrc={whatsIcon}
-          iconAlt="Mande uma mensagem no whatsapp."
-          iconStyle="size-[2.8125rem]" 
-          btnStyle="size-[4.375rem] flex justify-center items-center
-          rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
-          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px] cursor-pointer"
-          onClick={() => window.open(`https://wa.me/${phoneNumber}`, '_blank')}
-        />
-        <IconBtn
-          id="floatingMail"
-          iconSrc={mailIcon}
-          iconAlt="Mande um email."
-          iconStyle="size-[2.8125rem]" 
-          btnStyle="size-[4.375rem] flex justify-center items-center
-          rounded-full p-[0.75rem] border-main-black border-[3px] max-sm:border-[2px] bg-main-white
-          inset-shadow-main-black/25 inset-shadow-[-2px_-2px_1px_1px] cursor-pointer"
-          onClick={() => window.open(`mailto:${email}`, '_blank')}
-        />
-      </FloatingBtnsContainer>
+      {useFloatingButtons && 
+        <FloatingBtnsContainer>
+          <a 
+            id="floatingWhats"
+            href={`https://wa.me/${phoneNumber}`}
+            className="
+              size-[4.375rem] flex justify-center items-center
+              rounded-full p-[0.75rem] border-main-black 
+              border-[3px] max-sm:border-[2px] min-xl:border-[0.1875rem]
+              bg-main-white inset-shadow-main-black/25 max-sm:hidden
+              inset-shadow-[-0.125rem_-0.125rem_0.0625rem_0.0625rem] cursor-pointer
+            "
+          >
+            <ImageIcon 
+              src={whatsIcon} 
+              alt="Mande uma mensagem no whatsapp."
+              className="size-[2.8125rem]"
+            />
+          </a>
+          <a 
+            id="floatingMail"
+            href={`mailto:${email}`}
+            className="
+              size-[4.375rem] flex justify-center items-center
+              rounded-full p-[0.75rem] border-main-black 
+              border-[3px] max-sm:border-[2px] min-xl:border-[0.1875rem]
+              bg-main-white inset-shadow-main-black/25 max-sm:hidden
+              inset-shadow-[-0.125rem_-0.125rem_0.0625rem_0.0625rem] cursor-pointer
+            "
+          >
+            <ImageIcon 
+              src={mailIcon} 
+              alt="Mande um email."
+              className="size-[2.8125rem]"
+            />
+          </a>
+        </FloatingBtnsContainer>
+      }
 
       <Section title="Sobre" children={<ImageTextCarousel />}/>
       <Section title="Localização" style="pr-0">
