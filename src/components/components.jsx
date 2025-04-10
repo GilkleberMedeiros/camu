@@ -13,6 +13,7 @@ export default {
   // Main components
   "header": main.Header,
   "main": main.Main,
+  "footer": main.Footer,
   // Menu components
   "shareMenu": menus.ShareMenu,
   "menu": menus.Menu,

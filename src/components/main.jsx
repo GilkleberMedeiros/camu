@@ -9,7 +9,11 @@ import logo from "./logo.jsx";
 // Vite provided paths
 import logoIcon from "/assets/tmp-logo.svg";
 import whatsIcon from "/assets/icons/whats-icon.svg";
+import facebookIcon from "/assets/icons/facebook-icon.svg";
+import instagramIcon from "/assets/icons/instagram-icon.svg";
+import tiktokIcon from "/assets/icons/tiktok-icon.svg";
 import mailIcon from "/assets/icons/mail.svg";
+import React from "react";
 
 
 export function Header()
@@ -35,6 +39,59 @@ export function Header()
 
 export function Main()
 {
+  const parentRef = React.useRef(null);
+  const targetRef = React.useRef(null);
+
+  React.useEffect(() => {
+    // Wait for refs to be available
+    if (!parentRef.current || !targetRef.current) return;
+
+    const parent = parentRef.current;
+    const target = targetRef.current;
+
+    const worker = new Worker(new URL(
+      "../workers/isWithinBounds.js", 
+      import.meta.url
+    ), { type: "module" } );
+
+    // Handle worker response
+    worker.onmessage = (e) => {
+      const { isWithinBounds } = e.data;
+      target.style.position = isWithinBounds ? 'fixed' : 'absolute';
+    };
+
+    // Add event listeners with debounce for performance
+    let timeout = null;
+    const handleScroll = () => {
+      if (timeout) clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        // Send data to worker
+        worker.postMessage({
+          parentRect: parent.getBoundingClientRect(),
+          targetRect: target.getBoundingClientRect()
+        });
+      }, 100);
+    };
+
+    // Add listeners
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+
+    // Initial check
+    worker.postMessage({
+      parentRect: parent.getBoundingClientRect(),
+      targetRect: target.getBoundingClientRect(),
+    });
+
+    // Cleanup
+    return () => {
+      worker.terminate();
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      if (timeout) clearTimeout(timeout);
+    };
+  }, []); // Empty dependency array = run once on mount
+
   const physicalAdresses = [
     {
       "name": "Camu", 
@@ -84,9 +141,15 @@ export function Main()
   const useFloatingButtons = true;
 
   return (
-    <div className="m-0 b-0 p-0">
+    <div 
+      className="m-0 b-0 p-0 relative"
+      ref={parentRef}
+    >
       {useFloatingButtons && 
-        <FloatingBtnsContainer>
+        <FloatingBtnsContainer
+          style="mb-4" 
+          ref={targetRef}
+        >
           <a 
             id="floatingWhats"
             href={`https://wa.me/${phoneNumber}`}
@@ -157,6 +220,71 @@ export function Main()
           </span>
         </ContactTextBox>
       </Section>
+    </div>
+  );
+}
+
+export function Footer() 
+{
+  let socialMedia = [
+    { 
+      name: "whatsapp", 
+      src: whatsIcon, 
+      alt: "Veja nosso perfil no whatsapp.", 
+      link: `https://wa.me/5521000000000`, 
+    },
+    {
+      name: "instagram",
+      src: instagramIcon,
+      alt: "Veja nosso perfil no instagram.",
+      link: "https://www.instagram.com/vii_zedek/",
+    },
+    {
+      name: "facebook",
+      src: facebookIcon,
+      alt: "Veja nosso perfil no facebook.",
+      link: "https://www.facebook.com/username",
+    },
+    {
+      name: "tiktok",
+      src: tiktokIcon,
+      alt: "Veja nosso perfil no tiktok.",
+      link: "https://tiktok.com/@username",
+    },
+  ];
+
+  return (
+    <div 
+      className="
+        w-full flex justify-between px-[12px] py-[10px] 
+        min-xl:px-[0.875rem] min-xl:py-[0.75rem] bg-secondary-white
+      "
+    >
+      <logo.Container>
+        <logo.Icon src={logoIcon} />
+        <div className="size-[100%] flex flex-col gap-[5px]">
+          <span className="font-light text-[0.875rem]">Encontre-nos em </span>
+          <div 
+            className="
+              flex flex-wrap justify-start items-start gap-[7px] min-xl:gap-[0.625rem]
+            "
+          >
+            {socialMedia.map((v, i) => {
+              return (
+                <a href={v.link} >
+                  <ImageIcon src={v.src} alt={v.alt} className="size-[1.75rem]" />
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </logo.Container>
+      <div className="flex justify-end items-end">
+        <span className="space-x-[5px] min-c-s:space-x-[10px] min-sm:space-x-[1.25rem]">
+          <span className="font-light text-[0.875rem]">Criado por </span>
+          <Link style="font-extralight text-[0.875rem]">Gilkleber Medeiros</Link>
+        </span>
+      </div>
     </div>
   );
 }
