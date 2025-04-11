@@ -1,0 +1,134 @@
+{
+  "name": "Camu",
+  "infos": {
+    "useFloatingButtons": true,
+    "logo": {
+      "logoImgPath": "/assets/tmp-logo.svg",
+      "logoTitle": "Camu"
+    },
+    "share": {
+      "useShare": true,
+      "socialMedia": [
+        {
+          "name": "whatsapp", 
+          "src": "/assets/icons/whats-icon.svg", 
+          "alt": "Compartilhe no whatsapp.",
+          "link": "https://wa.me/5521000000000/"
+        },
+        {
+          "name": "instagram", 
+          "src": "/assets/icons/instagram-icon.svg", 
+          "alt": "Compartilhe no instagram.",
+          "link": "https://www.instagram.com/vii_zedek/"
+        },
+        {
+          "name": "facebook", 
+          "src": "/assets/icons/facebook-icon.svg", 
+          "alt": "Compartilhe no facebook.",
+          "link": "https://www.facebook.com/username/"
+        },
+        {
+          "name": "tiktok", 
+          "src": "/assets/icons/tiktok-icon.svg", 
+          "alt": "Compartilhe no tiktok.",
+          "link": "https://tiktok.com/@username/"
+        }
+      ]
+    },
+    "imageText": [
+      {
+        "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 1"}, 
+        "text": {"title": "title1", "content": "content 1"}
+      },
+      {
+        "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 2"}, 
+        "text": {"title": "title2", "content": "content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2"}
+      },
+      {
+        "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 3"}, 
+        "text": {"title": "title3", "content": "content3"}
+      },
+      {
+        "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 4"}, 
+        "text": {"title": "title4", "content": "content4"}
+      },
+      {
+        "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 5"}, 
+        "text": {"title": "title5", "content": "content5"}
+      }
+    ],
+    "physicalAdresses": [
+      {
+        "name": "Camu", 
+        "state": "SP", 
+        "city": "Bauru", 
+        "bairro": "bairro", 
+        "street": "Rua almeida dos santos",
+        "number": "442",
+        "cep": "22440-055",
+        "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
+      },
+      {
+        "name": "Camu", 
+        "state": "RJ", 
+        "city": "Jacarézinho", 
+        "bairro": "bairro", 
+        "street": "Rua Vinícius da Silva",
+        "number": "157",
+        "cep": "44228-777",
+        "viewOnMapsUrl": "https://www.google.com/maps?q=-22.541419434132827,-45.62919203153549"
+      },
+      {
+        "name": "Camu", 
+        "state": "SP", 
+        "city": "Mauá", 
+        "bairro": "Distrito", 
+        "street": "Rua vanessa lopes",
+        "number": "2222",
+        "cep": "0000-000",
+        "viewOnMapsUrl": "https://www.google.com/maps?q=-20.541419434132827,-40.62919203153549"
+      }
+    ],
+    "openingHours": {
+      "monday": "07:00 - 12:00, 13:00 - 17:00",
+      "tuesday": "07:00 - 12:00, 13:00 - 17:00",
+      "wednesday": "07:00 - 12:00, 13:00 - 17:00",
+      "thursday": "07:00 - 12:00, 13:00 - 17:00",
+      "friday": "07:00 - 12:00, 13:00 - 17:00",
+      "saturday": "Fechado",
+      "sunday": "Fechado"
+    },
+    "contact": {
+      "phoneNumber": "5521000000000",
+      "phoneNumberDisplay": "+55 21 00000-0000",
+      "email": "example@gmail.com"
+    },
+    "socialMedia": [
+      {
+        "name": "whatsapp",
+        "src": "/assets/icons/whats-icon.svg", 
+        "alt": "Veja nosso perfil no whatsapp.", 
+        "link": "https://wa.me/5521000000000/"
+      },
+      {
+        "name": "instagram",
+        "src": "/assets/icons/instagram-icon.svg",
+        "alt": "Veja nosso perfil no instagram.",
+        "link": "https://www.instagram.com/vii_zedek/"
+      },
+      {
+        "name": "facebook",
+        "src": "/assets/icons/facebook-icon.svg",
+        "alt": "veja nosso perfil no facebook.",
+        "link": "https://www.facebook.com/username/"
+      },
+      {
+        "name": "tiktok",
+        "src": "/assets/icons/tiktok-icon.svg",
+        "alt": "Veja nosso perfil no tiktok.",
+        "link": "https://tiktok.com/@username/"
+      }
+    ]
+  }
+}
+

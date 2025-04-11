@@ -5,9 +5,9 @@ import { ImageTextCarousel } from "./carousels.jsx";
 import { PhysicalAdressCard, InfinityCardsList } from "./cards";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
+import infos from "../infos.json";
 
 // Vite provided paths
-import logoIcon from "/assets/tmp-logo.svg";
 import whatsIcon from "/assets/icons/whats-icon.svg";
 import facebookIcon from "/assets/icons/facebook-icon.svg";
 import instagramIcon from "/assets/icons/instagram-icon.svg";
@@ -18,7 +18,8 @@ import React from "react";
 
 export function Header()
 {
-  const logoTitle = "Camu";
+  const logoTitle = infos.infos.logo.logoTitle;
+  const logoIcon = infos.infos.logo.logoImgPath;
 
   return (
     <header 
@@ -92,53 +93,15 @@ export function Main()
     };
   }, []); // Empty dependency array = run once on mount
 
-  const physicalAdresses = [
-    {
-      "name": "Camu", 
-      "state": "SP", 
-      "city": "Bauru", 
-      "bairro": "b428d40", 
-      "street": "Rua almeida dos santos",
-      "number": "442",
-      "cep": "22440-055",
-      "viewOnMapsUrl": "https://www.google.com/maps?q=-23.541419434132827,-46.62919203153549"
-    },
-    {
-      "name": "Camu", 
-      "state": "RJ", 
-      "city": "Jacarézinho", 
-      "bairro": "bairro", 
-      "street": "Rua Vinícius da Silva",
-      "number": "157",
-      "cep": "44228-777",
-      "viewOnMapsUrl": "https://www.google.com/maps?q=-22.541419434132827,-45.62919203153549"
-    },
-    {
-      "name": "Camu", 
-      "state": "SP", 
-      "city": "Mauá", 
-      "bairro": "Distrito", 
-      "street": "Rua vanessa lopes",
-      "number": "2222",
-      "cep": "0000-000",
-      "viewOnMapsUrl": "https://www.google.com/maps?q=-20.541419434132827,-40.62919203153549"
-    },
-  ];
+  const physicalAdresses = infos.infos.physicalAdresses;
 
-  const openingHoursInfo = {
-    "monday": "07:00 - 12:00, 13:00 - 17:00",
-    "tuesday": "07:00 - 12:00, 13:00 - 17:00",
-    "wednesday": "07:00 - 12:00, 13:00 - 17:00",
-    "thursday": "07:00 - 12:00, 13:00 - 17:00",
-    "friday": "07:00 - 12:00, 13:00 - 17:00",
-    "saturday": "Fechado",
-    "sunday": "Fechado",
-  };
+  const openingHoursInfo = infos.infos.openingHours;
 
-  const phoneNumber = "5511000000000";
-  const email = "example@gmail.com";
+  const phoneNumber = infos.infos.contact.phoneNumber;
+  const phoneNumberDisplay = infos.infos.contact.phoneNumberDisplay;
+  const email = infos.infos.contact.email;
 
-  const useFloatingButtons = true;
+  const useFloatingButtons = infos.infos.useFloatingButtons;
 
   return (
     <div 
@@ -216,7 +179,7 @@ export function Main()
             <Link href={`https://wa.me/${phoneNumber}`} style="text-[0.8125rem]">
               mande uma mensagem
             </Link>&nbsp;
-            pelo whatsapp em {phoneNumber}
+            pelo whatsapp em {phoneNumberDisplay}
           </span>
         </ContactTextBox>
       </Section>
@@ -226,32 +189,8 @@ export function Main()
 
 export function Footer() 
 {
-  let socialMedia = [
-    { 
-      name: "whatsapp", 
-      src: whatsIcon, 
-      alt: "Veja nosso perfil no whatsapp.", 
-      link: `https://wa.me/5521000000000`, 
-    },
-    {
-      name: "instagram",
-      src: instagramIcon,
-      alt: "Veja nosso perfil no instagram.",
-      link: "https://www.instagram.com/vii_zedek/",
-    },
-    {
-      name: "facebook",
-      src: facebookIcon,
-      alt: "Veja nosso perfil no facebook.",
-      link: "https://www.facebook.com/username",
-    },
-    {
-      name: "tiktok",
-      src: tiktokIcon,
-      alt: "Veja nosso perfil no tiktok.",
-      link: "https://tiktok.com/@username",
-    },
-  ];
+  const logoIcon = infos.infos.logo.logoImgPath;
+  const socialMedia = infos.infos.socialMedia;
 
   return (
     <div 
@@ -271,7 +210,7 @@ export function Footer()
           >
             {socialMedia.map((v, i) => {
               return (
-                <a href={v.link} >
+                <a key={i} href={v.link} >
                   <ImageIcon src={v.src} alt={v.alt} className="size-[1.75rem]" />
                 </a>
               );

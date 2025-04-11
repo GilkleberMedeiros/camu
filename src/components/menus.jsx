@@ -2,12 +2,7 @@ import React from "react";
 
 import { ImageIcon, IconShare3 } from "./icons.jsx";
 import { MenuLink } from "./links.jsx";
-
-// Vite provided paths
-import whatsIcon from "/assets/icons/whats-icon.svg";
-import instagramIcon from "/assets/icons/instagram-icon.svg";
-import tiktokIcon from "/assets/icons/tiktok-icon.svg";
-import facebookIcon from "/assets/icons/facebook-icon.svg";
+import infos from "../infos.json";
 
 
 export function Menu() {
@@ -162,17 +157,17 @@ export function ShareMenu({ socialMediaShareLinks })
         {socialMediaShareLinks.map(
           (v, i) => {
             return (
-              <button 
+              <a 
                 key={i} 
+                href={v.link}
                 className="
                  w-full flex gap-[4px] min-xl:gap-[0.25rem] p-[4px] min-xl:p-[0.25rem] 
                  justify-center items-center cursor-pointer hover:bg-gray-200 active:bg-gray-200
                 "
-                onClick={v.onClick}
               >
                 <span className="font-light text-[11px] min-xl:text-[0.6875rem]">Compartilhe no</span>
                 <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px] min-xl:size-[1.5rem]"} />
-              </button>
+              </a>
             );
           }
         )}
@@ -183,29 +178,8 @@ export function ShareMenu({ socialMediaShareLinks })
 
 export function MenuAndMediaShare()
 {
-  const socialMediaShareLinks = [
-    {
-      "src": whatsIcon, 
-      "alt": "Botão de compartilhar no whatsapp", 
-      "onClick": () => {}
-    },
-    {
-      "src": instagramIcon,
-      "alt": "Botão de compartilhar no instagram",
-      "onClick": () => {}
-    },
-    {
-      "src": tiktokIcon,
-      "alt": "Botão de compartilhar no facebook",
-      "onClick": () => {}
-    },
-    {
-      "src": facebookIcon,
-      "alt": "Botão de compartilhar no facebook",
-      "onClick": () => {}
-    }
-  ]
-  const shareMenuOn = true;
+  const socialMediaShareLinks = infos.infos.share.socialMedia;
+  const shareMenuOn = infos.infos.share.useShare;
 
   return (
     <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem] max-sm:gap-[40px] max-c-s:gap-[20px]">

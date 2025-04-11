@@ -2,6 +2,7 @@ import React from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons.jsx"
 import { Modal } from "./containers.jsx";
+import infos from "../infos.json";
 
 
 
@@ -194,37 +195,7 @@ export function ImageTextCarousel()
     
   }, []);
 
-  const imageText = [
-    {
-      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 1"}, 
-      "text": {"title": "title1", "content": "content 1"}
-    },
-    {
-      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 2"}, 
-      "text": {"title": "title2", "content": 
-        "content2 content2 content2 content2 content2 content2 content2 "+
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2 content2 content2 content2" + 
-        "content2 content2 content2 content2 content2"
-        }
-    },
-    {
-      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 3"}, 
-      "text": {"title": "title3", "content": "content3"}
-    },
-    {
-      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 4"}, 
-      "text": {"title": "title4", "content": "content4"}
-    },
-    {
-      "image": {"imageUrl": "https://picsum.photos/1000/600", "imageTitle": "image 5"}, 
-      "text": {"title": "title5", "content": "content5"}
-    },
-  ]
+  const imageText = infos.infos.imageText;
 
   const len = imageText.length;
   // Carosuel expanded container dynamic width
