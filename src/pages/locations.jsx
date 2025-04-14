@@ -1,12 +1,12 @@
-import { Header, Footer } from "../components/main";
+import { Header, Locations as Locs, Footer } from "../components/main";
 
 
-export function Locations() 
+export function Locations()  
 {
     return (
         <>
             <Header />
-            <h2>Localizações nesta página</h2>
+            <Locs />
             <Footer />
         </>
     );

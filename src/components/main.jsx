@@ -2,9 +2,11 @@ import { ImageIcon } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
-import { PhysicalAdressCard, InfinityCardsList } from "./cards.jsx";
+import { InfinityCardsList } from "./cards.jsx";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
+import * as AdressCard from "./composed/AdressCard.jsx";
+import PhysicalAdressCard from "./composed/AdressCard.jsx";
 import infos from "../infos.json";
 
 // Vite provided paths
@@ -153,8 +155,7 @@ export function Main()
           {
             physicalAdresses.map((v, i) => {
               return (
-                <PhysicalAdressCard key={i} adressInfo={v}>
-                </PhysicalAdressCard>
+                <PhysicalAdressCard key={i} adressInfo={v} />
               );
             })
           }
@@ -222,5 +223,58 @@ export function Footer()
         </span>
       </div>
     </div>
+  );
+}
+
+export function Locations() 
+{
+  const physicalAdresses = infos.infos.physicalAdresses;
+
+  return (
+    <>
+      <Section title="Localizações">
+        <div className="flex flex-wrap gap-[1rem] justify-center align-center">
+          {physicalAdresses.map((v, i) => {
+            return (
+              <AdressCard.Root key={i} style="max-c-s:min-w-[240px]">
+                <AdressCard.Title style="portrait:text-[1.25rem]">{v.name}</AdressCard.Title>
+                <AdressCard.Content>
+                  <AdressCard.LabeledInfo 
+                    style="portrait:text-[1rem]"
+                    label={"Estado "}
+                    info={v.state}
+                  />
+                  <AdressCard.LabeledInfo 
+                    style="portrait:text-[1rem]"
+                    label={"Cidade "}
+                    info={v.city}
+                  />
+                  <AdressCard.LabeledInfo 
+                    style="portrait:text-[1rem]"
+                    label={"Bairro "}
+                    info={v.bairro}
+                  />
+                  <AdressCard.Info
+                    style="portrait:text-[1rem]"
+                    info={`${v.street}, ${v.number}`} 
+                  />
+                  <AdressCard.Info 
+                    style="portrait:text-[1rem]"
+                    info={v.cep}
+                  />
+                </AdressCard.Content>
+
+                <AdressCard.MapLink 
+                  style="portrait:text-[1rem]"
+                  href={v.viewOnMapsUrl}
+                >
+                  Ver no google maps
+                </AdressCard.MapLink>
+              </AdressCard.Root>
+            );
+          })}
+        </div>
+      </Section>
+    </>
   );
 }
