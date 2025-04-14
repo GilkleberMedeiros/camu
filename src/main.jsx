@@ -1,17 +1,21 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { Header, Main, Footer } from "./components/main";
-import { AdviceUnfinishedAppCard } from "./components/cards";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { Home } from "./pages/home";
 
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home/>
+    }
+]);
 
 let elem = document.querySelector(".app");
 let root = ReactDOM.createRoot(elem);
 
 root.render(
     <StrictMode>
-        <Header></Header>
-        <Main></Main>
-        <Footer></Footer>
-        <AdviceUnfinishedAppCard />
+        <RouterProvider router={router}/>
     </StrictMode>
 );

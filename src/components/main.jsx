@@ -1,17 +1,14 @@
-import { IconBtn, ImageIcon } from "./icons.jsx";
+import { ImageIcon } from "./icons.jsx";
 import { MenuAndMediaShare } from "./menus.jsx";
 import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox } from "./containers.jsx";
 import { ImageTextCarousel } from "./carousels.jsx";
-import { PhysicalAdressCard, InfinityCardsList } from "./cards";
+import { PhysicalAdressCard, InfinityCardsList } from "./cards.jsx";
 import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
 import infos from "../infos.json";
 
 // Vite provided paths
 import whatsIcon from "/assets/icons/whats-icon.svg";
-import facebookIcon from "/assets/icons/facebook-icon.svg";
-import instagramIcon from "/assets/icons/instagram-icon.svg";
-import tiktokIcon from "/assets/icons/tiktok-icon.svg";
 import mailIcon from "/assets/icons/mail.svg";
 import React from "react";
 
