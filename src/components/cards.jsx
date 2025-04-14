@@ -33,7 +33,7 @@ export function CardsList({ id="", style, children, ...rest })
       {...rest}
     >
       {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
-      {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
+      {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="/localizacoes" target="_self" />]}
     </div>
   );
 }
@@ -52,7 +52,7 @@ export function InfinityCardsList({ style="", children, ...rest })
         {...rest}
       >
         {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
-        {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="" />]}
+        {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="/localizacoes" target="_self" />]}
       </div>
     </CardsList>
   );
@@ -101,6 +101,7 @@ export function SeeMoreCard({ href, target="_blank", rel="", ...rest })
         border-[1px] min-xl:border-[0.0625rem] hover:border-secondary-white active:border-secondary-white
         flex items-center justify-center duration-250 ease-in-out cursor-pointer
       "
+      href={href}
       target={target}
       rel={rel}
       {...rest}

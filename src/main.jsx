@@ -2,12 +2,16 @@ import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Home } from "./pages/home";
+import { Locations } from "./pages/locations"
 
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home/>
+        children: [
+            { index: true, Component: Home },
+            { path: "localizacoes", Component: Locations }
+        ],
     }
 ]);
 
