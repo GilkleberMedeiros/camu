@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import React from "react";
 
 import { SectionTitle  } from "./titles.jsx";
 import { normalizeStrToId } from "../scripts/utils.js";
