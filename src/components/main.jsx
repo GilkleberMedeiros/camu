@@ -223,7 +223,7 @@ export function Footer()
       <div className="flex justify-end items-end">
         <span className="space-x-[5px] min-c-s:space-x-[10px] min-sm:space-x-[1.25rem]">
           <span className="font-light text-[0.875rem]">Criado por </span>
-          <Link style="font-extralight text-[0.875rem]">Gilkleber Medeiros</Link>
+          <Link href="https://linktr.ee/gilkleber.dev" style="font-extralight text-[0.875rem]">Gilkleber Medeiros</Link>
         </span>
       </div>
     </div>
