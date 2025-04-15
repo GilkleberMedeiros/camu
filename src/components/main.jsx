@@ -29,7 +29,9 @@ export function Header()
       "
     >
       <logo.Container>
-        <logo.Icon src={logoIcon} />
+        <a href="/">
+          <logo.Icon src={logoIcon} />
+        </a>
         <logo.Title title={logoTitle} />
       </logo.Container>
       <MenuAndMediaShare />
@@ -198,7 +200,9 @@ export function Footer()
       "
     >
       <logo.Container>
-        <logo.Icon src={logoIcon} />
+        <a href="/">
+          <logo.Icon src={logoIcon} />
+        </a>
         <div className="size-[100%] flex flex-col gap-[5px]">
           <span className="font-light text-[0.875rem]">Encontre-nos em </span>
           <div 
