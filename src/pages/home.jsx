@@ -1,5 +1,4 @@
 import { Header, Main, Footer } from "../components/main";
-import { AdviceUnfinishedAppCard } from "../components/cards";
 
 
 export function Home() 
@@ -9,7 +8,6 @@ export function Home()
             <Header></Header>
             <Main></Main>
             <Footer></Footer>
-            <AdviceUnfinishedAppCard />
         </>
     );
 }
