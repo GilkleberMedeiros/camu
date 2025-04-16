@@ -2,7 +2,7 @@ import React from "react";
 
 import { ImageIcon, IconShare3 } from "./icons.jsx";
 import { MenuLink } from "./links.jsx";
-import infos from "../infos.json";
+import infos from "../infos.js";
 
 
 export function Menu() {
@@ -160,6 +160,7 @@ export function ShareMenu({ socialMediaShareLinks })
               <a 
                 key={i} 
                 href={v.link}
+                target="_blank"
                 className="
                  w-full flex gap-[4px] min-xl:gap-[0.25rem] p-[4px] min-xl:p-[0.25rem] 
                  justify-center items-center cursor-pointer hover:bg-gray-200 active:bg-gray-200

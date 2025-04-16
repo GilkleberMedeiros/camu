@@ -7,7 +7,7 @@ import { Link } from "./links.jsx";
 import logo from "./logo.jsx";
 import * as AdressCard from "./composed/AdressCard.jsx";
 import PhysicalAdressCard from "./composed/AdressCard.jsx";
-import infos from "../infos.json";
+import infos from "../infos.js";
 
 // Vite provided paths
 import whatsIcon from "/assets/icons/whats-icon.svg";

@@ -2,7 +2,7 @@ import React from "react";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "./icons.jsx"
 import { Modal } from "./containers.jsx";
-import infos from "../infos.json";
+import infos from "../infos.js";
 
 
 
