@@ -4,10 +4,10 @@ import { Section, ZebraOpeningHoursTable, FloatingBtnsContainer, ContactTextBox 
 import { ImageTextCarousel } from "./carousels.jsx";
 import { InfinityCardsList } from "./cards.jsx";
 import { Link } from "./links.jsx";
-import logo from "./logo.jsx";
+import logo from "./composed/logo.jsx";
 import * as AdressCard from "./composed/AdressCard.jsx";
 import PhysicalAdressCard from "./composed/AdressCard.jsx";
-import infos from "../infos.js";
+import infos from "../infos.json";
 
 // Vite provided paths
 import whatsIcon from "/assets/icons/whats-icon.svg";

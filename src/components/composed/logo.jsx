@@ -1,7 +1,7 @@
 /* These components follow composition pattern */
 import { twMerge } from "tailwind-merge";
 
-import { ImageIcon } from "./icons";
+import { ImageIcon } from "../icons";
 
 
 export default {
