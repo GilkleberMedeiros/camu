@@ -1,37 +1,57 @@
+"use client";
+
 import React from "react";
 
-import { ChevronLeftIcon, ChevronRightIcon } from "./icons.jsx"
-import { Modal } from "./containers.jsx";
-import infos from "../infos.js";
+import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
+import { Modal } from "@/components/containers";
+import infos from "@/infos";
 
 
 
 export function ImageTextCarousel()
 {
-  const firstCarouselImgItemRef = React.useRef(null);
-  const firstCarouselTextItemRef = React.useRef(null);
-  const carouselImgItemsContainerRef = React.useRef(null);
-  const carouselTextItemsContainerRef = React.useRef(null);
+  const firstCarouselImgItemRef = React.useRef<HTMLDivElement>(null);
+  const firstCarouselTextItemRef = React.useRef<HTMLDivElement>(null);
+  const carouselImgItemsContainerRef = React.useRef<HTMLDivElement>(null);
+  const carouselTextItemsContainerRef = React.useRef<HTMLDivElement>(null);
 
-  const touchStartRef = React.useRef(false);
+  const touchStartRef = React.useRef<boolean>(false);
 
   // Handle image modal
   React.useEffect(() => {
     const images = Array.from(document.getElementsByClassName("carousel-img"));
-    const modal = document.getElementById("carouselImgModal");
-    const modalContent = document.getElementById("modalContent");
+    const modal = document.getElementById("carouselImgModal")!;
+    const modalContent = document.getElementById("modalContent")!;
 
-    const onImageClick = function (e) {
-      modalContent.innerHTML = e.currentTarget.cloneNode().outerHTML;
+    !images ? 
+        console.warn(`
+            Componentes com classe carousel-img não foram encontrados. 
+            FROM_COMPONENT: componente ImageTextCarousel!
+        `) : null;
+    !modal ? 
+        console.warn(`
+            Componente com id carouselImgModal não foi encontrado. 
+            FROM_COMPONENT: componente ImageTextCarousel!
+        `) : null;
+    !modalContent ? 
+        console.warn(`
+            Componente com id modalContent não foi encontrado. 
+            FROM_COMPONENT: componente ImageTextCarousel!
+        `) : null;
+
+    const onImageClick = function (e: Event) {
+        const currentTarget = e.currentTarget as HTMLElement;
+        const cloned = currentTarget.cloneNode() as HTMLElement;
+      modalContent.innerHTML = cloned.outerHTML;
       modal.style.display = "flex";
-      modal.showModal();
+      (modal as HTMLDialogElement).showModal();
     };
-    const onModalClose = function (e) {
+    const onModalClose = function (e: Event) {
       modalContent.innerHTML = "";
-      modal.style.display = "none";
-      modal.close();
+      (modal as HTMLDialogElement).style.display = "none";
+      (modal as HTMLDialogElement).close();
     };
-    const onClickOutside = function (e) {
+    const onClickOutside = function (e: Event) {
       // Only raises touchstart on mobile devices that also raise mousedown.
       if (e.type === "touchstart") {
         touchStartRef.current = true;
@@ -40,9 +60,11 @@ export function ImageTextCarousel()
         return;
       }
 
+      let target = e.target as HTMLElement;
+
       // Do nothing if clicked on modalContent or its children
-      if (modalContent.contains(e.target) || 
-        modalContent.outerHTML === e.target.outerHTML) return;
+      if (modalContent.contains(target) || 
+        modalContent.outerHTML === target.outerHTML) return;
 
       onModalClose(e);
 
@@ -75,11 +97,11 @@ export function ImageTextCarousel()
       let countMin = 1;
       let move = carouselItemWidth;
   
-      return function (directionFactor) {
+      return function (directionFactor: 1 | -1) {
         // Se directionFactor >= 1, move o carousel para a esquerda
         // Se directionFactor <= 0, move o carousel para a direita
   
-        return function (e) {
+        return function (e: Event) {
           // Avisa se as referências usadas não forem encontradas
           !carouselTextItemsContainerRef.current ? 
             console.warn("Referência para o container de textos do carousel não encontrada.") : null
@@ -88,33 +110,33 @@ export function ImageTextCarousel()
             console.warn("Referência para o primeiro item do carousel não encontrada.") : null
     
           directionFactor = directionFactor > 0 ? 1 : -1;
-          let previuousTextItem = carouselTextItemsContainerRef.current.children[count - 1];
+          let previuousTextItem = carouselTextItemsContainerRef.current!.children[count - 1] as HTMLElement;
   
-          let lastTextItem = carouselTextItemsContainerRef.current.children[countMax - 1];
+          let lastTextItem = carouselTextItemsContainerRef.current!.children[countMax - 1] as HTMLElement;
   
           // Incrementando ou decrementando a ref do item atual (count)
           directionFactor > 0 ? count-- : count++;
   
-          let currentTextItem = carouselTextItemsContainerRef.current.children[count - 1];
+          let currentTextItem = carouselTextItemsContainerRef.current!.children[count - 1] as HTMLElement;
     
           // Se count excedeu o limite maximo
           if (count > countMax) {
             count = 1;
   
             // slide to first carousel item
-            firstCarouselImgItemRef.current.style.marginLeft = "0%";
-            firstCarouselTextItemRef.current.style.marginLeft = "0%";
+            firstCarouselImgItemRef.current!.style.marginLeft = "0%";
+            firstCarouselTextItemRef.current!.style.marginLeft = "0%";
   
             // Animate text items opacity
-            firstCarouselTextItemRef.current.style.opacity = textSolidOpacity;
+            firstCarouselTextItemRef.current!.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
           } // Se count excedeu o limite mínimo
           else if (countMin > count) {
             count = countMax;
   
             // slide to last carousel item
-            firstCarouselImgItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
-            firstCarouselTextItemRef.current.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
+            firstCarouselImgItemRef.current!.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
+            firstCarouselTextItemRef.current!.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
   
             // Animate text items opacity
             lastTextItem.style.opacity = textSolidOpacity;
@@ -122,12 +144,12 @@ export function ImageTextCarousel()
           }// Senão, mova para o próximo item
           else {
             // Pega o marginLeft atual e adiciona com valor do movimento
-            let currentMarginLeft = parseInt(firstCarouselImgItemRef.current.style.marginLeft);
+            let currentMarginLeft = parseInt(firstCarouselImgItemRef.current!.style.marginLeft);
             let newMarginLeft = currentMarginLeft + (move * directionFactor);
   
             // Slide carousel items
-            firstCarouselImgItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
-            firstCarouselTextItemRef.current.style.marginLeft = newMarginLeft.toString()+ "%";
+            firstCarouselImgItemRef.current!.style.marginLeft = newMarginLeft.toString()+ "%";
+            firstCarouselTextItemRef.current!.style.marginLeft = newMarginLeft.toString()+ "%";
   
             // Animate text items opacity
             currentTextItem.style.opacity = textSolidOpacity;
@@ -166,19 +188,42 @@ export function ImageTextCarousel()
     /*
       Adding scale animation in images for mobile devices.
     */
-    const onTouchStart = (e) => {
-      const image = e.target.parentElement;
+    const onTouchStart = (e: Event) => { 
+      const target = e.target as HTMLElement;
+      const image = target.parentElement;
 
-      image.style.scale = "105% 105% 105%";
+      !image ? 
+        console.warn(`
+            Referência de image.parentElement não encontrada. 
+            FROM: Componente ImageTextCarousel > 
+            useEffect tratador da animação de scale da imagem > função onTouchStart.
+        `) : null;
+
+      image!.style.scale = "105% 105% 105%";
 
     };
 
-    const onTouchEnd = (e) => {
-      const image = e.target.parentElement;
+    const onTouchEnd = (e: Event) => { 
+        const target = e.target as HTMLElement;
+      const image = target.parentElement;
 
-      image.style.scale = "100% 100% 100%";
+      !image ? 
+        console.warn(`
+            Referência de image.parentElement não encontrada. 
+            FROM: Componente ImageTextCarousel > 
+            useEffect tratador da animação de scale da imagem > função onTouchEnd.
+        `) : null;
+
+      image!.style.scale = "100% 100% 100%";
     };
-    const images = carouselImgItemsContainerRef.current
+
+    !carouselImgItemsContainerRef.current ? 
+        console.warn(`
+            Referência para carouselImgItemsContainerRef não encontrada. 
+            FROM: Componente ImageTextCarousel > useEffect tratador da animação de scale da imagem.
+        `) : null;
+
+    const images = carouselImgItemsContainerRef.current!
       .querySelectorAll("[id^='carouselImgItem']");
     
     images.forEach((v) => {
@@ -246,7 +291,7 @@ export function ImageTextCarousel()
           {/* carousel img modal */}
           <Modal
             id="carouselImgModal"
-            style="
+            className="
               m-0 border-0 p-0 outline-0 min-w-[100%] min-h-[100%]
               flex justify-center items-center 
               bg-main-black/25 backdrop:bg-main-black/25

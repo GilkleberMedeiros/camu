@@ -1,8 +1,11 @@
+"use client";
+
 import React from "react";
 
-import { ImageIcon, IconShare3 } from "./icons.jsx";
-import { MenuLink } from "./links.jsx";
-import infos from "../infos.js";
+import { ImageIcon, IconShare3 } from "@/components/icons";
+import { MenuLink } from "@/components/links";
+import infos from "@/infos";
+import { SocialMediaShareLink } from "@/types/infos";
 
 
 export function Menu() {
@@ -41,10 +44,10 @@ export function Menu() {
         py-[12px] min-xl:py-[0.75rem] gap-[16px] min-xl:gap-[1rem] font-medium
       "
       >
-        <MenuLink href="#sectionSobre" style="text-[0.75rem]">Sobre</MenuLink>
-        <MenuLink href="#sectionLocalizacao" style="text-[0.75rem]">Localização</MenuLink>
-        <MenuLink href="#sectionHorarioDeFuncionamento" style="text-[0.75rem]">Horário de funcionamento</MenuLink>
-        <MenuLink href="#sectionEntreEmContato" style="text-[0.75rem]">Entre em contato</MenuLink>
+        <MenuLink href="#sectionSobre" className="text-[0.75rem]">Sobre</MenuLink>
+        <MenuLink href="#sectionLocalizacao" className="text-[0.75rem]">Localização</MenuLink>
+        <MenuLink href="#sectionHorarioDeFuncionamento" className="text-[0.75rem]">Horário de funcionamento</MenuLink>
+        <MenuLink href="#sectionEntreEmContato" className="text-[0.75rem]">Entre em contato</MenuLink>
       </nav>
 
       {/* Mobile Side Menu */}
@@ -58,10 +61,10 @@ export function Menu() {
           hidden z-40
       `}>
           <div className="w-full h-full flex flex-col justify-start items-center gap-[15px] mt-[26%]">
-            <MenuLink href="#sectionSobre" style="text-center text-[12px]">Sobre</MenuLink>
-            <MenuLink href="#sectionLocalizacao" style="text-center text-[12px]">Localização</MenuLink>
-            <MenuLink href="#sectionHorarioDeFuncionamento" style="text-center text-[12px]">Horário de funcionamento</MenuLink>
-            <MenuLink href="#sectionEntreEmContato" style="text-center text-[12px]">Entre em contato</MenuLink>
+            <MenuLink href="#sectionSobre" className="text-center text-[12px]">Sobre</MenuLink>
+            <MenuLink href="#sectionLocalizacao" className="text-center text-[12px]">Localização</MenuLink>
+            <MenuLink href="#sectionHorarioDeFuncionamento" className="text-center text-[12px]">Horário de funcionamento</MenuLink>
+            <MenuLink href="#sectionEntreEmContato" className="text-center text-[12px]">Entre em contato</MenuLink>
           </div>
       </div>
 
@@ -76,14 +79,16 @@ export function Menu() {
   );
 }
 
-export function ShareMenu({ socialMediaShareLinks })
+export function ShareMenu(
+  { socialMediaShareLinks }: { socialMediaShareLinks: Array<SocialMediaShareLink> }
+)
 {
-  const floatMenuContentRef = React.useRef(null);
-  const rootRef = React.useRef(null);
-  const touchStartRef = React.useRef(false);
+  const floatMenuContentRef = React.useRef<HTMLDivElement>(null);
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const touchStartRef = React.useRef<boolean>(false);
 
   React.useEffect(() => {
-    const onClickOutside = (e) => {
+    const onClickOutside = (e: Event) => {
       // Only raises touchstart on mobile devices that also raise mousedown.
       if (e.type === "touchstart") {
         touchStartRef.current = true;
@@ -92,21 +97,26 @@ export function ShareMenu({ socialMediaShareLinks })
         return;
       }
   
-      const menuRoot = rootRef.current;
-      const menuContent = floatMenuContentRef.current;
+      const menuRoot = rootRef.current!;
+      const menuContent = floatMenuContentRef.current!;
+      const target = e.target as HTMLElement;
   
-      if (!menuRoot) return; // If menuRoot not loaded yet.
+      !menuRoot ? 
+        console.warn(`rootRef está vazio no componente ShareMenu!`) : null;
+      !menuContent ? 
+        console.warn(`floatMenuContentRef está vazio no componente ShareMenu!`) : null;
+      
       // if clicked on #floatMenuContent, do nothing
-      if (menuContent.outerHTML === e.target.outerHTML || 
-        menuContent.contains(e.target)) return;
+      if (menuContent.outerHTML === target.outerHTML || 
+        menuContent.contains(target)) return;
       // Else, clicked on menuRoot (#flaotMenu) or its children
-      if (menuRoot.contains(e.target) || menuRoot.outerHTML === e.target.outerHTML) 
+      if (menuRoot.contains(target) || menuRoot.outerHTML === target.outerHTML) 
       {
         toggleMenuDisplay();
         return;
       }
   
-      floatMenuContentRef.current.style.display = "none";
+      floatMenuContentRef.current!.style.display = "none";
     }
   
     const toggleMenuDisplay = () => {
@@ -167,7 +177,7 @@ export function ShareMenu({ socialMediaShareLinks })
                 "
               >
                 <span className="font-light text-[11px] min-xl:text-[0.6875rem]">Compartilhe no</span>
-                <ImageIcon src={v.src} alt={v.alt} style={"max-md:size-[18px] size-[24px] min-xl:size-[1.5rem]"} />
+                <ImageIcon src={v.src} alt={v.alt} className={"max-md:size-[18px] size-[24px] min-xl:size-[1.5rem]"} />
               </a>
             );
           }
@@ -180,7 +190,7 @@ export function ShareMenu({ socialMediaShareLinks })
 export function MenuAndMediaShare()
 {
   const socialMediaShareLinks = infos.infos.share.socialMedia;
-  const shareMenuOn = infos.infos.share.useShare;
+  const shareMenuOn = infos.infos.share.useShareComponent;
 
   return (
     <div id="menuAndMediaShare" className="flex items-center gap-[0.75rem] max-sm:gap-[40px] max-c-s:gap-[20px]">

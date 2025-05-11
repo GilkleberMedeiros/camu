@@ -1,10 +1,12 @@
+import React from "react";
 import { twMerge } from "tailwind-merge";
 
-import { Link } from "./links.jsx";
-import packageData from "../../package.json"
+import { Link } from "@/components/links";
+import packageData from "../../package.json";
+import BaseProps, { LinkProps } from "@/types/props";
 
 
-export function Card({ style="", children, ...rest })
+export function Card({ className="", children, ...rest }: BaseProps)
 {
   return (
     <div 
@@ -12,7 +14,7 @@ export function Card({ style="", children, ...rest })
         max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] bg-main-white border-main-black 
         border-[1px] min-xl:border-[0.0625rem] shrink-0 not-portrait:min-w-[12.5rem] 
         not-portrait:shrink-1
-      `, style)}
+      `, className)}
       {...rest}
     >
       {children}
@@ -20,49 +22,72 @@ export function Card({ style="", children, ...rest })
   );
 }
 
-export function CardsList({ id="", style, children, ...rest })
+export function CardsList({ className, children, ...rest }: BaseProps)
 {
-  const childs = Array.from(children);
+  const childs = React.Children.toArray(children);
+  const firstTwoChilds = childs.slice(0, 2);
+  const firstChild = firstTwoChilds[0];
+  const secondChild = firstTwoChilds[1];
 
   return (
     <div 
-      id={id} 
       className={twMerge(`
         flex flex-nowrap w-[85%] p-[1.25rem] gap-[1rem] overflow-x-auto overflow-y-hidden
-      `, style)}
+      `, className)}
       {...rest}
     >
       {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
-      {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="/localizacoes" target="_self" />]}
+      {
+        childs.length < 3 ? children : 
+        [
+          React.isValidElement(firstChild) ? 
+            React.cloneElement(firstChild, { key: 0 }) : firstChild, 
+          React.isValidElement(secondChild) ? 
+            React.cloneElement(secondChild, { key: 1 }): secondChild, 
+          <SeeMoreCard key={3} href="/localizacoes" target="_self" />
+        ]
+      }
     </div>
   );
 }
 
-export function InfinityCardsList({ style="", children, ...rest }) 
+export function InfinityCardsList({ className="", children, ...rest }: BaseProps) 
 {
   /* Same as CardsList component, but the content inside this go until the limit of the screen. */
-  const childs = Array.from(children);
+  const childs = React.Children.toArray(children);
+  const firstTwoChilds = childs.slice(0, 2);
+  const firstChild = firstTwoChilds[0];
+  const secondChild = firstTwoChilds[1];
 
   return (
     <CardsList 
-      style={"block self-end w-[100%] pr-0"}
+      className={"block self-end w-[100%] pr-0"}
     >
       <div
-        className={twMerge("flex flex-nowrap gap-[1rem] overflow-x-auto overflow-y-hidden pr-[1.25rem]", style)}
+        className={twMerge("flex flex-nowrap gap-[1rem] overflow-x-auto overflow-y-hidden pr-[1.25rem]", className)}
         {...rest}
       >
         {/* will render only three cards (including SeeMoreCard) if cards N >= 3 */}
-        {childs.length < 3 ? children : [...(childs.slice(0, 2)), <SeeMoreCard href="/localizacoes" target="_self" />]}
+        {
+          childs.length < 3 ? children : 
+          [
+            React.isValidElement(firstChild) ? 
+              React.cloneElement(firstChild, { key: 0 }) : firstChild, 
+            React.isValidElement(secondChild) ? 
+              React.cloneElement(secondChild, { key: 1 }): secondChild, 
+            <SeeMoreCard key={3} href="/localizacoes" target="_self" />
+          ]
+        }
       </div>
     </CardsList>
   );
 }
 
-export function SeeMoreCard({ href, target="_blank", rel="", ...rest })
+export function SeeMoreCard({ href, target="_blank", rel="", ...rest }: LinkProps)
 {
   return (
     <Link 
-      style="
+      className="
         max-c-s:min-w-[180px] min-w-[240px] w-[18.75rem] not-portrait:min-w-[12.5rem] 
         not-portrait:shrink-1 bg-main-white border-main-black shrink-0
         border-[1px] min-xl:border-[0.0625rem] hover:border-secondary-white active:border-secondary-white

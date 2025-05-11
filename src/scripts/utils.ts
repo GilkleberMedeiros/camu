@@ -1,4 +1,4 @@
-export function normalizeStrToId(str)
+export function normalizeStrToId(str: string): string
 {
     return String(str)
     .split(' ') // captilize each word

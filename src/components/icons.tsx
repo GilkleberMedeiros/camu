@@ -1,15 +1,17 @@
 import { twMerge } from "tailwind-merge";
 
+import { ImageProps, SvgProps } from "@/types/props";
 
-export function ImageIcon({ id="", src, alt, style, children, ...rest })
+
+export function ImageIcon({ src, alt, className, children, ...rest }: ImageProps)
 {
   /* Generic and customizable icon */
   return (
-    <img id={id ? `${id}ImageIcon` : ""} src={src} alt={alt} className={style} {...rest} />
+    <img src={src} alt={alt} className={className} {...rest} />
   );
 }
 
-export function IconShare3({ style, children, ...rest })
+export function IconShare3({ className, children, ...rest }: SvgProps)
 {
   return (
     <svg 
@@ -22,7 +24,7 @@ export function IconShare3({ style, children, ...rest })
       strokeWidth={2} 
       strokeLinecap="round" 
       strokeLinejoin="round" 
-      className={twMerge("icon icon-tabler icons-tabler-outline icon-tabler-share-3", style)}
+      className={twMerge("icon icon-tabler icons-tabler-outline icon-tabler-share-3", className)}
       {...rest}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -31,7 +33,7 @@ export function IconShare3({ style, children, ...rest })
   );
 }
 
-export function ChevronLeftIcon({ style, children, ...rest })
+export function ChevronLeftIcon({ className, children, ...rest }: SvgProps)
 {
   return (
     <svg 
@@ -44,7 +46,7 @@ export function ChevronLeftIcon({ style, children, ...rest })
       strokeWidth="2" 
       strokeLinecap="round" 
       strokeLinejoin="round" 
-      className={twMerge("lucide lucide-chevron-left", style)}
+      className={twMerge("lucide lucide-chevron-left", className)}
       {...rest}
     >
       <path d="m15 18-6-6 6-6"/>
@@ -52,7 +54,7 @@ export function ChevronLeftIcon({ style, children, ...rest })
   );
 }
 
-export function ChevronRightIcon({ style, children, ...rest })
+export function ChevronRightIcon({ className, children, ...rest }: SvgProps)
 {
   return (
     <svg 
@@ -65,7 +67,7 @@ export function ChevronRightIcon({ style, children, ...rest })
       strokeWidth="2" 
       strokeLinecap="round" 
       strokeLinejoin="round" 
-      className={twMerge("lucide lucide-chevron-right", style)}
+      className={twMerge("lucide lucide-chevron-right", className)}
       {...rest}
     >
       <path d="m9 18 6-6-6-6"/>
@@ -73,12 +75,3 @@ export function ChevronRightIcon({ style, children, ...rest })
   );
 }
 
-export function IconBtn({ id=Symbol().toString(), iconSrc, iconAlt, iconStyle, btnStyle, onClick=null })
-{
-  return (
-    <button id={`${id}IconBtn`} className={btnStyle} onClick={onClick}>
-      <img src={iconSrc} className={iconStyle}
-        alt={iconAlt}/>
-    </button>
-  );
-}

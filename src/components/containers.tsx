@@ -1,24 +1,28 @@
+import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import React from "react";
 
-import { SectionTitle  } from "./titles.jsx";
-import { normalizeStrToId } from "../scripts/utils.js";
+import { SectionTitle  } from "@/components/titles";
+import { normalizeStrToId } from "@/scripts/utils";
+import BaseProps from "@/types/props";
+import { OpeningHours } from "@/types/infos";
 
 
-export function Section({ title, style="", children })
+export function Section({ title, className="", children, ...rest }: BaseProps & { title: string })
 {
   const normalizedTitle = normalizeStrToId(title);
 
   return (
     <div id={`section${normalizedTitle}`} 
-      className={twMerge("flex flex-col gap-[2.5rem] items-center p-[1.25rem]", style)}>
+      className={twMerge("flex flex-col gap-[2.5rem] items-center p-[1.25rem]", className)}
+      {...rest} 
+    >
       <SectionTitle title={title} />
       {children}
     </div>
   );
 }
 
-export function ZebraOpeningHoursTable({ openingHoursInfo })
+export function ZebraOpeningHoursTable({ openingHoursInfo }: { openingHoursInfo: OpeningHours })
 {
   return (
     <table className="w-[28.126rem]">
@@ -105,39 +109,42 @@ export function ZebraOpeningHoursTable({ openingHoursInfo })
   );
 }
 
-export function FloatingBtnsContainer({ style, children, ...rest })
-{
-  return (
-    <div 
-      className={twMerge(
-        `
-          fixed right-[22px] max-sm:right-[11px] bottom-[22px] max-sm:bottom-[11px] 
-          flex flex-col gap-[1.375rem] z-200 
-        `, style)
-      }
-      {...rest}
-    >
-      {children}
-    </div>
-  );
-}
+export const FloatingBtnsContainer = forwardRef<HTMLDivElement, BaseProps>(
+  ({ className, children, ...rest }, ref) => 
+  {
+    return (
+      <div 
+        className={twMerge(
+          `
+            fixed right-[22px] max-sm:right-[11px] bottom-[22px] max-sm:bottom-[11px] 
+            flex flex-col gap-[1.375rem] z-200 
+          `, className)
+        }
+        ref={ref}
+        {...rest}
+      >
+        {children}
+      </div>
+    );
+  }
+);
 
-export function ContactTextBox({ style="", children })
+export function ContactTextBox({ className="", children }: BaseProps)
 {
   return (
     <div className={
-      style || 
+      className || 
       "w-[21.5rem] flex flex-col justify-center items-center gap-[2.875rem] px-[0.6875rem] py-[1.375rem] "}>
       {children}
     </div>
   );
 }
 
-export function Modal({ style="", children, ...rest })
+export function Modal({ className="", children, ...rest }: BaseProps)
 {
   return (
     <dialog
-      className={twMerge("", style)}
+      className={twMerge("", className)}
       {...rest}
     >
       {children}

@@ -1,7 +1,9 @@
 import { twMerge } from "tailwind-merge";
 
+import { LinkProps } from "@/types/props";
 
-export function Link({ href, target="_blank", rel="", style="", children, ...rest })
+
+export function Link({ href, target="_blank", rel="", className="", children, ...rest }: LinkProps)
 {
     return (
         <a 
@@ -11,7 +13,7 @@ export function Link({ href, target="_blank", rel="", style="", children, ...res
                 underline-offset-[25%] decoration-[10%] hover:bg-secondary-black hover:text-main-white
                 hover:decoration-main-white active:bg-secondary-black active:text-main-white 
                 active:decoration-main-white 
-            `, style)
+            `, className)
         }
         href={href}
         target={target}
@@ -23,7 +25,7 @@ export function Link({ href, target="_blank", rel="", style="", children, ...res
     );
 }
 
-export function MenuLink({ href, target="_self", rel="", style="", children, ...rest })
+export function MenuLink({ href, target="_self", rel="", className="", children, ...rest }: LinkProps)
 {
     return (
         <a
@@ -39,7 +41,7 @@ export function MenuLink({ href, target="_self", rel="", style="", children, ...
                     before:w-0 before:h-[1px] before:border-dotted before:border-b-[2px] 
                     before:border-main-black before:transition-all before:duration-700 
                     before:ease-in-out hover:before:w-full hover:before:opacity-90
-                `, style
+                `, className
                 )
             }
             {...rest}
