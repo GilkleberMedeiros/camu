@@ -10,6 +10,27 @@ export const metadata: Metadata = {
     para pequenos negócios. Veja como será a página de localizações para seus 
     negócios ou lojas físicos.
   `,
+  openGraph: {
+    title: "Camu - LandPage para negócios físicos",
+    description: "camu é uma landpage com design minimalista criada e pensada para pequenos negócios.", 
+    siteName: "Camu",
+    images: [
+      {
+        url: "/assets/tmp-logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "Camu - LandPage para negócios físicos",
+      }
+    ],
+    locale: "pt_BR",
+    type: "website"
+  }, 
+  twitter: {
+    card: "summary_large_image",
+    title: "Camu - LandPage para negócios físicos", 
+    description: "camu é uma landpage com design minimalista criada e pensada para pequenos negócios.",
+    images: ["/assets/tmp-logo.svg"],
+  }
 }
 
 export default function LocalizacoesLayout({
