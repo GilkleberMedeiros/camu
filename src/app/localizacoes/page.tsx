@@ -1,130 +1,119 @@
-"use client";
-
-import React from "react";
-
 import { Section } from "@/components/containers";
 import * as AdressCard from "@/components/composed/adressCard";
 import infos from "@/infos";
 import { AddressInfo } from "@/types/infos";
 
-// TODO: Transformar esse component em server.
+
 export default function Locations() 
 {
-  const [ separatedAdresses, setSeparatedAdresses ] = React.useState<Array<Array<AddressInfo>>>([]);
-  const [ getStateLongName, setGetStateLongName ] = 
-    React.useState<(state: string) => string>((state: string) => state);
-
-  React.useEffect(() => {
-    const standardizeString = (str: string) => {
-      /**
-        Converts a string to uppercase, 
-        removes spaces and diacritics
-      */
-      return str
-        .normalize('NFD')                // Decompose accented characters
-        .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
-        .replace(/\s+/g, '')             // Remove spaces
-        .toUpperCase();
-    }
-  
-    const BRAZILIAN_STATES: { [key: string]: string } = {
-      // North
-      AM: "Amazonas",
-      AMAZONAS: "Amazonas",
-      PA: "Pará",
-      PARA: "Pará",
-      AC: "Acre",
-      ACRE: "Acre",
-      RO: "Rondônia",
-      RONDONIA: "Rondônia",
-      RR: "Roraima",
-      RORAIMA: "Roraima",
-      AP: "Amapá",
-      AMAPA: "Amapá",
-      TO: "Tocantins",
-      TOCANTINS: "Tocantins",
-    
-      // Northeast
-      MA: "Maranhão",
-      MARANHAO: "Maranhão",
-      PI: "Piauí",
-      PIAUI: "Piauí",
-      CE: "Ceará",
-      CEARA: "Ceará",
-      RN: "Rio Grande do Norte",
-      RIOGRANDEDONORTE: "Rio Grande do Norte",
-      PB: "Paraíba",
-      PARAIBA: "Paraíba",
-      PE: "Pernambuco",
-      PERNAMBUCO: "Pernambuco",
-      AL: "Alagoas",
-      ALAGOAS: "Alagoas",
-      SE: "Sergipe",
-      SERGIPE: "Sergipe",
-      BA: "Bahia",
-      BAHIA: "Bahia",
-    
-      // Southeast
-      MG: "Minas Gerais",
-      MINASGERAIS: "Minas Gerais",
-      ES: "Espírito Santo",
-      ESPIRITOSANTO: "Espírito Santo",
-      RJ: "Rio de Janeiro",
-      RIODEJANEIRO: "Rio de Janeiro",
-      SP: "São Paulo",
-      SAOPAULO: "São Paulo",
-    
-      // South
-      PR: "Paraná",
-      PARANA: "Paraná",
-      SC: "Santa Catarina",
-      SANTACATARINA: "Santa Catarina",
-      RS: "Rio Grande do Sul",
-      RIOGRANDEDOSUL: "Rio Grande do Sul",
-    
-      // Center-West
-      MS: "Mato Grosso do Sul",
-      MATOGROSSODOSUL: "Mato Grosso do Sul",
-      MT: "Mato Grosso",
-      MATOGROSSO: "Mato Grosso",
-      GO: "Goiás",
-      GOIAS: "Goiás",
-      DF: "Distrito Federal",
-      DISTRITOFEDERAL: "Distrito Federal"
-    };
-
-    // setState value can be either a normal value or a function
-    setGetStateLongName(() => (state: string) => BRAZILIAN_STATES[standardizeString(state)]);
-  
-    // maps a specific BRAZILIAN_STATES value to adressesSorted index
-    let holder: { [key: string]: number } = {};
-    let adressesSorted = []; // The physicalAdresses separated by state
-  
-    for (let i = 0; i < physicalAdresses.length; i++) 
-    {
-      let adress = physicalAdresses[i];
-      let BS_value = BRAZILIAN_STATES[standardizeString(adress.state)];
-      let index = holder[BS_value]; 
-
-      // if state index is already registered in holder
-      if (index !== undefined) 
-      {
-        adressesSorted[index].push(adress);
-        continue;
-      }
-
-      let next_index = adressesSorted.length;
-      // push new state list to adressesSorted 
-      adressesSorted.push([adress]);
-      // register new state list index in holder
-      holder[BS_value] = next_index;
-    }
-
-    setSeparatedAdresses(adressesSorted);
-
-  }, []);
+  let separatedAdresses: Array<Array<AddressInfo>> = [];
+  const getStateLongName = (state: string) => BRAZILIAN_STATES[standardizeString(state)];
 
   const physicalAdresses = infos.infos.physicalAdresses;
+
+  const standardizeString = (str: string) => {
+    /**
+      Converts a string to uppercase, 
+      removes spaces and diacritics
+    */
+    return str
+      .normalize('NFD')                // Decompose accented characters
+      .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+      .replace(/\s+/g, '')             // Remove spaces
+      .toUpperCase();
+  }
+
+  const BRAZILIAN_STATES: { [key: string]: string } = {
+    // North
+    AM: "Amazonas",
+    AMAZONAS: "Amazonas",
+    PA: "Pará",
+    PARA: "Pará",
+    AC: "Acre",
+    ACRE: "Acre",
+    RO: "Rondônia",
+    RONDONIA: "Rondônia",
+    RR: "Roraima",
+    RORAIMA: "Roraima",
+    AP: "Amapá",
+    AMAPA: "Amapá",
+    TO: "Tocantins",
+    TOCANTINS: "Tocantins",
+  
+    // Northeast
+    MA: "Maranhão",
+    MARANHAO: "Maranhão",
+    PI: "Piauí",
+    PIAUI: "Piauí",
+    CE: "Ceará",
+    CEARA: "Ceará",
+    RN: "Rio Grande do Norte",
+    RIOGRANDEDONORTE: "Rio Grande do Norte",
+    PB: "Paraíba",
+    PARAIBA: "Paraíba",
+    PE: "Pernambuco",
+    PERNAMBUCO: "Pernambuco",
+    AL: "Alagoas",
+    ALAGOAS: "Alagoas",
+    SE: "Sergipe",
+    SERGIPE: "Sergipe",
+    BA: "Bahia",
+    BAHIA: "Bahia",
+  
+    // Southeast
+    MG: "Minas Gerais",
+    MINASGERAIS: "Minas Gerais",
+    ES: "Espírito Santo",
+    ESPIRITOSANTO: "Espírito Santo",
+    RJ: "Rio de Janeiro",
+    RIODEJANEIRO: "Rio de Janeiro",
+    SP: "São Paulo",
+    SAOPAULO: "São Paulo",
+  
+    // South
+    PR: "Paraná",
+    PARANA: "Paraná",
+    SC: "Santa Catarina",
+    SANTACATARINA: "Santa Catarina",
+    RS: "Rio Grande do Sul",
+    RIOGRANDEDOSUL: "Rio Grande do Sul",
+  
+    // Center-West
+    MS: "Mato Grosso do Sul",
+    MATOGROSSODOSUL: "Mato Grosso do Sul",
+    MT: "Mato Grosso",
+    MATOGROSSO: "Mato Grosso",
+    GO: "Goiás",
+    GOIAS: "Goiás",
+    DF: "Distrito Federal",
+    DISTRITOFEDERAL: "Distrito Federal"
+  };
+
+  // maps a specific BRAZILIAN_STATES value to adressesSorted index
+  let holder: { [key: string]: number } = {};
+  let adressesSorted = []; // The physicalAdresses separated by state
+
+  for (let i = 0; i < physicalAdresses.length; i++) 
+  {
+    let adress = physicalAdresses[i];
+    let BS_value = BRAZILIAN_STATES[standardizeString(adress.state)];
+    let index = holder[BS_value]; 
+
+    // if state index is already registered in holder
+    if (index !== undefined) 
+    {
+      adressesSorted[index].push(adress);
+      continue;
+    }
+
+    let next_index = adressesSorted.length;
+    // push new state list to adressesSorted 
+    adressesSorted.push([adress]);
+    // register new state list index in holder
+    holder[BS_value] = next_index;
+  }
+
+  separatedAdresses = adressesSorted;
 
   return (
     <>
