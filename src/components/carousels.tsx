@@ -7,7 +7,6 @@ import { Modal } from "@/components/containers";
 import infos from "@/infos";
 
 
-
 export function ImageTextCarousel()
 {
   const firstCarouselImgItemRef = React.useRef<HTMLDivElement>(null);
@@ -92,9 +91,9 @@ export function ImageTextCarousel()
   React.useEffect(() => {
     const moveAnimateCarouselItems = (() => {
       // Loading variables
-      let count = 1; // current item ref
-      let countMax = len;
-      let countMin = 1;
+      let current = 1; // current item ref
+      let currentMax = len;
+      let currentMin = 1;
       let move = carouselItemWidth;
   
       return function (directionFactor: 1 | -1) {
@@ -110,18 +109,18 @@ export function ImageTextCarousel()
             console.warn("Referência para o primeiro item do carousel não encontrada.") : null
     
           directionFactor = directionFactor > 0 ? 1 : -1;
-          let previuousTextItem = carouselTextItemsContainerRef.current!.children[count - 1] as HTMLElement;
+          let previuousTextItem = carouselTextItemsContainerRef.current!.children[current - 1] as HTMLElement;
   
-          let lastTextItem = carouselTextItemsContainerRef.current!.children[countMax - 1] as HTMLElement;
+          let lastTextItem = carouselTextItemsContainerRef.current!.children[currentMax - 1] as HTMLElement;
   
-          // Incrementando ou decrementando a ref do item atual (count)
-          directionFactor > 0 ? count-- : count++;
+          // Incrementando ou decrementando a ref do item atual (current)
+          directionFactor > 0 ? current-- : current++;
   
-          let currentTextItem = carouselTextItemsContainerRef.current!.children[count - 1] as HTMLElement;
+          let currentTextItem = carouselTextItemsContainerRef.current!.children[current - 1] as HTMLElement;
     
-          // Se count excedeu o limite maximo
-          if (count > countMax) {
-            count = 1;
+          // Se current excedeu o limite maximo
+          if (current > currentMax) {
+            current = 1;
   
             // slide to first carousel item
             firstCarouselImgItemRef.current!.style.marginLeft = "0%";
@@ -130,17 +129,21 @@ export function ImageTextCarousel()
             // Animate text items opacity
             firstCarouselTextItemRef.current!.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
-          } // Se count excedeu o limite mínimo
-          else if (countMin > count) {
-            count = countMax;
+
+            // load img next to the current img according the directionFactor
+          } // Se current excedeu o limite mínimo
+          else if (currentMin > current) {
+            current = currentMax;
   
             // slide to last carousel item
-            firstCarouselImgItemRef.current!.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
-            firstCarouselTextItemRef.current!.style.marginLeft = ((move * (countMax - 1)) * -1).toString() + "%";
+            firstCarouselImgItemRef.current!.style.marginLeft = ((move * (currentMax - 1)) * -1).toString() + "%";
+            firstCarouselTextItemRef.current!.style.marginLeft = ((move * (currentMax - 1)) * -1).toString() + "%";
   
             // Animate text items opacity
             lastTextItem.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
+
+            // load img next to the current img according the directionFactor
           }// Senão, mova para o próximo item
           else {
             // Pega o marginLeft atual e adiciona com valor do movimento
@@ -154,6 +157,8 @@ export function ImageTextCarousel()
             // Animate text items opacity
             currentTextItem.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
+
+            // load img next to the current img according the directionFactor
           }
     
         }
@@ -353,7 +358,7 @@ export function ImageTextCarousel()
                 >
                   <img 
                     src={item.image.imageUrl} 
-                    alt={item.image.imageTitle} 
+                    alt={item.image.imageTitle}
                     className="
                       carousel-img 
                       
