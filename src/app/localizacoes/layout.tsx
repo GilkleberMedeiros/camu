@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import RootLayout from "../layout";
-
 
 export const metadata: Metadata = {
     title: "Camu - LandPage para negócios físicos - Página de localizações",
