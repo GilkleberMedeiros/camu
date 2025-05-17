@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Head from "next/head";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 import "./globals.css";
@@ -43,6 +44,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br" style={{ minHeight: "100vh", height: "100vh" }}>
+      <Head>
+        <link
+          rel="preload"
+          href="/assets/fonts/Inter/Inter-VariableFont_opsz,wght.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </Head>
       <body
         className="bg-main-white font-inter min-h-screen h-screen"
       >

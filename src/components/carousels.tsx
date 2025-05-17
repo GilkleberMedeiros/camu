@@ -129,8 +129,6 @@ export function ImageTextCarousel()
             // Animate text items opacity
             firstCarouselTextItemRef.current!.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
-
-            // load img next to the current img according the directionFactor
           } // Se current excedeu o limite mínimo
           else if (currentMin > current) {
             current = currentMax;
@@ -142,8 +140,6 @@ export function ImageTextCarousel()
             // Animate text items opacity
             lastTextItem.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
-
-            // load img next to the current img according the directionFactor
           }// Senão, mova para o próximo item
           else {
             // Pega o marginLeft atual e adiciona com valor do movimento
@@ -157,8 +153,6 @@ export function ImageTextCarousel()
             // Animate text items opacity
             currentTextItem.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
-
-            // load img next to the current img according the directionFactor
           }
     
         }
@@ -358,7 +352,7 @@ export function ImageTextCarousel()
                 >
                   <img 
                     src={item.image.imageUrl} 
-                    alt={item.image.imageTitle}
+                    alt={item.image.imageTitle} 
                     className="
                       carousel-img 
                       
