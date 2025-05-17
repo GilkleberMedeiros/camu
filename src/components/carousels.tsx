@@ -94,7 +94,16 @@ export function ImageTextCarousel()
       let current = 1; // current item ref
       let currentMax = len;
       let currentMin = 1;
-      let move = carouselItemWidth;
+      // Margin left values to position all carousel items
+      let positions = (() => {
+        let arr = [];
+        for (let i = 0; i < len; i++) 
+        {
+          arr.push(-(i * carouselItemWidth));
+        }
+
+        return arr;
+      })();
   
       return function (directionFactor: 1 | -1) {
         // Se directionFactor >= 1, move o carousel para a esquerda
@@ -134,21 +143,17 @@ export function ImageTextCarousel()
             current = currentMax;
   
             // slide to last carousel item
-            firstCarouselImgItemRef.current!.style.marginLeft = ((move * (currentMax - 1)) * -1).toString() + "%";
-            firstCarouselTextItemRef.current!.style.marginLeft = ((move * (currentMax - 1)) * -1).toString() + "%";
+            firstCarouselImgItemRef.current!.style.marginLeft = positions[currentMax - 1].toString() + "%";
+            firstCarouselTextItemRef.current!.style.marginLeft = positions[currentMax - 1].toString() + "%";
   
             // Animate text items opacity
             lastTextItem.style.opacity = textSolidOpacity;
             previuousTextItem.style.opacity = textOpaqueOpacity;
           }// Senão, mova para o próximo item
           else {
-            // Pega o marginLeft atual e adiciona com valor do movimento
-            let currentMarginLeft = parseInt(firstCarouselImgItemRef.current!.style.marginLeft);
-            let newMarginLeft = currentMarginLeft + (move * directionFactor);
-  
             // Slide carousel items
-            firstCarouselImgItemRef.current!.style.marginLeft = newMarginLeft.toString()+ "%";
-            firstCarouselTextItemRef.current!.style.marginLeft = newMarginLeft.toString()+ "%";
+            firstCarouselImgItemRef.current!.style.marginLeft = positions[current - 1].toString()+ "%";
+            firstCarouselTextItemRef.current!.style.marginLeft = positions[current - 1].toString()+ "%";
   
             // Animate text items opacity
             currentTextItem.style.opacity = textSolidOpacity;
