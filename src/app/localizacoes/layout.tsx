@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     siteName: "Camu",
     images: [
       {
-        url: "/assets/tmp-logo.svg",
+        url: "/assets/tmp-logo.png",
         width: 1200,
         height: 630,
         alt: "Camu - LandPage para negócios físicos",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Camu - LandPage para negócios físicos", 
     description: "camu é uma landpage com design minimalista criada e pensada para pequenos negócios.",
-    images: ["/assets/tmp-logo.svg"],
+    images: ["/assets/tmp-logo.png"],
   }
 }
 
