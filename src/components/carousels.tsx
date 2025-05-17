@@ -262,17 +262,19 @@ export function ImageTextCarousel()
         max-c-s:h-[280px] min-xl:h-[21.875rem] flex justify-center items-center gap-[2rem]
       "
     >
-      <button
-        id="carouselLeftArrow"
-        className="
-          w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
-        bg-secondary-white flex justify-center items-center cursor-pointer
+      {len > 1 && 
+        <button
+          id="carouselLeftArrow"
+          className="
+            w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
+          bg-secondary-white flex justify-center items-center cursor-pointer
 
-          carousel-button-left
-        "
-      >
-        <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
-      </button>
+            carousel-button-left
+          "
+        >
+          <ChevronLeftIcon width="1.5625rem" height="1.5625rem" />
+        </button>
+      }
 
       <div 
         id="carouselContent" 
@@ -305,7 +307,7 @@ export function ImageTextCarousel()
             >
             </div>
           </Modal>
-          <div
+          {len > 1 && <div
             id="carouselLeftArrowShadow"
             className="
               absolute left-0 top-0 h-[100%] w-[6.5rem]
@@ -333,7 +335,7 @@ export function ImageTextCarousel()
             >
               <ChevronLeftIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
             </button>
-          </div>
+          </div>}
           <div 
             id="expandedCarouselItemImgContainer" 
             className={"flex flex-nowrap h-[100%]"} 
@@ -364,7 +366,7 @@ export function ImageTextCarousel()
               );
             })}
           </div>
-          <div
+          {len > 1 && <div
             id="carouselRightArrowShadow"
             className="
               absolute right-0 top-0 h-[100%] w-[6.5rem] z-10
@@ -392,7 +394,7 @@ export function ImageTextCarousel()
             >
               <ChevronRightIcon className="stroke-main-white w-[2rem] h-[2.9375rem]" />
             </button>
-          </div>
+          </div>}
         </div>
 
         <div className="
@@ -426,17 +428,19 @@ export function ImageTextCarousel()
         </div>
       </div>
         
-      <button
-        id="carouselRightArrow"
-        className="
-          w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
-          bg-secondary-white flex justify-center items-center cursor-pointer
+      {len > 1 && 
+        <button
+          id="carouselRightArrow"
+          className="
+            w-[3.125rem] h-[3.125rem] max-sm:hidden portrait:hidden rounded-full 
+            bg-secondary-white flex justify-center items-center cursor-pointer
 
-          carousel-button-right
-        "
-      >
-        <ChevronRightIcon width="1.75rem" height="2rem" />
-      </button>
+            carousel-button-right
+          "
+        >
+          <ChevronRightIcon width="1.75rem" height="2rem" />
+        </button>
+      }
     </div>
   );
 }
