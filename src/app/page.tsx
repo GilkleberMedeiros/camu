@@ -18,7 +18,7 @@ import { Link } from "@/components/links";
 const whatsIcon = "/assets/icons/whats-icon.svg";
 const mailIcon = "/assets/icons/mail.svg";
 
-const isWithinBoundsWorkerPath = "/scripts/isWithinBounds.js";
+const isWithinBoundsWorkerPath = "/scripts/workers/isWithinBounds.js";
 
 
 export default function Home()
