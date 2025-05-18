@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@/components/icons";
 import { Modal } from "@/components/containers";
@@ -357,12 +358,15 @@ export function ImageTextCarousel()
                   style={{ width: carouselItemWidthClassStr, marginLeft: "0%" }}
                   ref={index === 0 ? firstCarouselImgItemRef : null}
                 >
-                  <img 
+                  <Image 
                     src={item.image.imageUrl} 
                     alt={item.image.imageTitle} 
+                    width={item.image.width}
+                    height={item.image.height}
+                    { ...(index === 0 ? { priority: true } : undefined) }
                     className="
                       carousel-img 
-                      
+
                       m-0 h-[100%] object-cover
                     "
                     style={{ width: "100%" }}
