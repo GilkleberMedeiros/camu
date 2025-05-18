@@ -62,7 +62,7 @@ const schemaJsonLD: WithContext<LocalBusiness> = {
     addressLocality: "São Paulo", 
     addressRegion: "SP", 
     postalCode: "01024-900", 
-    addressCountry: "Brasil"
+    addressCountry: "BR"
   }, 
   geo: {
     "@type": "GeoCoordinates", 
