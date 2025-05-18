@@ -43,7 +43,10 @@
                     "width": 1920,
                     "height": 1080 
                 }, 
-                "text": {"title": "title1", "content": "content 1"}
+                "text": { 
+                    "title": "Apresentação", 
+                    "content": "Camu é uma landpage/website com design minimalista e responsivo criada e pensada para pequenos negócios físicos. Veja a seguir as vantagens!" 
+                }
             },
             {
                 "image": { 
@@ -52,7 +55,10 @@
                     "width": 1920, 
                     "height": 1080 
                 }, 
-                "text": {"title": "title2", "content": "content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2 content2"}
+                "text": { 
+                    "title": "Pensada para seu negócio!", 
+                    "content": "Se você é um empreendedor que possui uma ou mais lojas físicas, espalhadas através de uma única região ou vários estados, então esta land foi criada pensando no seu negócio!" 
+                }
             },
             {
                 "image": { 
@@ -61,7 +67,10 @@
                     "width": 1920, 
                     "height": 1080 
                 }, 
-                "text": {"title": "title3", "content": "content3"}
+                "text": { 
+                    "title": "Design Minimalista!", 
+                    "content": "O design de toda a landpage, como você pode ver, é minimalista feito assim para não agredir o usuário com muitas informações e para parecer limpo, suave e confortável." 
+                }
             },
             {
                 "image": { 
@@ -70,7 +79,10 @@
                     "width": 1920, 
                     "height": 1080 
                 }, 
-                "text": {"title": "title4", "content": "content4"}
+                "text": { 
+                    "title": "Responsiva!", 
+                    "content": "O projeto possui um design totalmente responsivo, funcionando tanto em dispositivos mobile como desktops. No geral, toda a land/website vai funcionar corretamente em qualquer dispositivo com tamanhos de tela que podem variar de 320x535 pixels para 2560x1335 pixels, com este último sendo quase uma resolução 4K." 
+                }
             },
             {
                 "image": { 
@@ -79,7 +91,10 @@
                     "width": 1920, 
                     "height": 1080 
                 }, 
-                "text": {"title": "title5", "content": "content5"}
+                "text": { 
+                    "title": "Dê uma volta", 
+                    "content": "Agora que você já viu as principais vantagens, dê uma olhada em toda a página, olhe os elementos, passe o mouse sobre eles, clique neles. Se, depois disso, quiser adquirir o projeto basta contatar o criador no rodapé da página em 'criado por'." 
+                }
             }
         ],
         "physicalAdresses": [

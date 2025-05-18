@@ -4,13 +4,15 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Camu - LandPage para negócios físicos - Página de localizações",
   description: `
-    camu é uma landpage com design minimalista criada e pensada 
+    camu é uma landpage com design minimalista e responsivo criada e pensada 
     para pequenos negócios. Veja como será a página de localizações para seus 
     negócios ou lojas físicos.
   `,
   openGraph: {
     title: "Camu - LandPage para negócios físicos",
-    description: "camu é uma landpage com design minimalista criada e pensada para pequenos negócios.", 
+    description: `
+      camu é uma landpage com design minimalista e responsivo criada e pensada para pequenos negócios.
+    `, 
     siteName: "Camu",
     images: [
       {
@@ -26,7 +28,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Camu - LandPage para negócios físicos", 
-    description: "camu é uma landpage com design minimalista criada e pensada para pequenos negócios.",
+    description: `
+      camu é uma landpage com design minimalista e responsivo criada e pensada para pequenos negócios.
+    `,
     images: ["/assets/tmp-logo.png"],
   }
 }
