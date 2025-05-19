@@ -2,7 +2,7 @@
     "name": "Camu",
     "infos": {
         "domains": {
-            "env": "local",
+            "env": "prod",
             "original": "http://localhost:3000", 
             "friendly": "http://localhost:3000",
             "prod": { 
