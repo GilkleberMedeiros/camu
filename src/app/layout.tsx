@@ -112,7 +112,7 @@ export default function RootLayout({
       <body
         className="bg-main-white font-inter min-h-screen h-screen"
       >
-        <GoogleTagManager gtmId="GTM-KB54ZM2M"/>
+        <GoogleTagManager gtmId="GTM-M64ZJXRN"/>
 
         {/* Json-LD Schema */}
         <script 
