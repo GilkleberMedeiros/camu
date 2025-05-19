@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Head from "next/head";
 import { WithContext, LocalBusiness } from "schema-dts";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { Url } from "url";
 
 import "./globals.css";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import infos from "@/infos";
 
+
+const logoRelativeUrl = "/assets/tmp-logo.png";
+const logoUrl = (new URL(logoRelativeUrl, infos.infos.domains.original)).toString();
 
 export const metadata: Metadata = {
   title: "Camu - LandPage para negócios físicos - Página principal",
@@ -24,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Camu",
     images: [
       {
-        url: "/assets/tmp-logo.png",
+        url: logoUrl,
         width: 1200,
         height: 630,
         alt: "Camu - LandPage para negócios físicos",
@@ -39,7 +43,7 @@ export const metadata: Metadata = {
     description: `
       camu é uma landpage com design minimalista e responsivo criada e pensada para pequenos negócios.
     `,
-    images: ["/assets/tmp-logo.png"],
+    images: [logoUrl],
   }
 };
 
@@ -57,7 +61,7 @@ const schemaJsonLD: WithContext<LocalBusiness> = {
     return v.image.imageUrl;
   }), 
   description: "Camu é uma landpage com design minimalista e responsivo criada e pensada para pequenos negócios.", 
-  logo: "/assets/tmp-logo.png",
+  logo: logoUrl,
   url: "#invalid-url-example#.com", 
   priceRange: "R$15-200", 
   address: {

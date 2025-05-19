@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
+import { Url } from "url";
 
+import infos from "@/infos";
+
+
+const logoRelativeUrl = "/assets/tmp-logo.png";
+const logoUrl = (new URL(logoRelativeUrl, infos.infos.domains.original)).toString();
 
 export const metadata: Metadata = {
     title: "Camu - LandPage para negócios físicos - Página de localizações",

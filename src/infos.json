@@ -1,6 +1,23 @@
 {
     "name": "Camu",
     "infos": {
+        "domains": {
+            "env": "local",
+            "original": "http://localhost:3000", 
+            "friendly": "http://localhost:3000",
+            "prod": { 
+                "original": "https://delightful-hill-0ea4b7810.6.azurestaticapps.net", 
+                "friendly": "https://delightful-hill-0ea4b7810.6.azurestaticapps.net"
+            },
+            "dev": {
+                "original": "https://ambitious-wave-07723330f.6.azurestaticapps.net",
+                "friendly": "https://ambitious-wave-07723330f.6.azurestaticapps.net"
+            }, 
+            "local": {
+                "original": "http://localhost:3000",
+                "friendly": "http://localhost:3000"
+            }
+        },
         "useFloatingButtons": true,
         "logo": {
             "logoImgPath": "/assets/tmp-logo.svg",
